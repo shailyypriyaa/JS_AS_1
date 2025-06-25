@@ -1,0 +1,99 @@
+<!-- Execution Context  -->
+<!-- Everything in JS happens inside an Execution context,
+it is like a big box which has two components in it : memory (in this, all the variables are stored as key value pairs like a : 10, func : {....}, it is also called as variable environment), 2nd component is code (this is the place where code is executed one line at a time, also called as thread of execution)
+-->
+
+<!-- 
+💡 What is an Execution Context?
+An execution context is a container where the JavaScript code is evaluated and executed.
+
+Think of it like a room where all the variables, functions, and the value of this are kept while your code is running.
+
+🔄 Types of Execution Contexts
+Global Execution Context (GEC)
+Created when your JavaScript program starts running.
+Only one Global Execution Context exists.
+this points to the window object (in browser).
+All global variables and functions are inside this context.
+
+Function Execution Context (FEC)
+Created each time a function is called.
+Each function call has its own new context.
+Has its own variables, parameters, and value of this.
+
+Eval Execution Context (rarely used)
+Created by eval() function (not recommended in modern JS).
+
+🧠 What Happens When a Context is Created?
+Each Execution Context goes through two phases:
+1. Creation Phase (also called "Memory Creation Phase"):
+Memory is allocated to:
+Variables (set to undefined)
+Functions (whole function is stored)
+this is determined
+
+2. Execution Phase:
+Code is executed line by line.
+Variables are assigned their actual values.
+Function calls happen (creating new execution contexts).
+
+🧱 Example with Step-by-Step Explanation:
+var name = "Alice";
+function greet() {
+  var message = "Hello " + name;
+  console.log(message);
+}
+greet();
+
+Step 1: Global Execution Context is created
+name is allocated memory → initially undefined
+greet is stored as a function
+this points to window (in browser)
+Step 2: Global Execution Context executes
+name = "Alice" is assigned
+greet() is called → New Function Execution Context is created
+Step 3: Function Execution Context of greet
+message is allocated memory → initially undefined
+Then assigned → "Hello Alice"
+console.log(message) prints "Hello Alice"
+
+🏗️ Call Stack
+All execution contexts are managed by the call stack (LIFO - last in, first out):
+Global Execution Context is pushed on the stack
+When greet() is called, its Function Execution Context is pushed
+When greet() finishes, its context is popped
+Finally, the global context remains
+
+understanding this keyword:
+🔍 Example 1: Function called globally
+function show() {
+  console.log(this);
+}
+show();
+What’s happening?
+You're just calling show() on its own.
+So JavaScript says:
+→ “Nobody owns this function, it’s just being called globally.”
+→ So this will point to the global object (like window in browsers).
+✅ this = window
+
+🔍 Example 2: Function called inside an object
+const user = {
+  name: "Aisha",
+  greet: function() {
+    console.log(this.name);
+  }
+};
+user.greet();
+What’s happening?
+You're calling greet() using user.
+JavaScript says:
+→ “Oh! This function is called by the user object.”
+→ So this refers to user.
+✅ this = user
+✅ Output: "Aisha"
+
+this is created when a function starts running, and it points to the object that is calling the function — it helps JS know who's in charge at that moment.
+-->
+
+<!-- JS is asynchronous single-threaded language, js can only execute one command at a time and in a specific order, it means it goes to next line only when current line is finished -->
