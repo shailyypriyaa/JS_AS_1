@@ -1,0 +1,7 @@
+// Debouncing vs Throttling
+// both are used for optimizing performance of web app, it happens by limiting the rate of func calls.
+// eg: how a search box works, whenever we have to search something like samsung, we first enter s and that calls an api and we can see all the words starting from s, similarly for every key press, (s, a, m, s, u, n, g), so we made 7 api calls, acc to Debouncing, we write samsung then we take a pause during whic api call is made, acc to Throttling, only make a func call after a certain limit of time, aise ho sakta h ki vo limit u pr khatam ho jaye, toh uske baad api call ho jaye.
+
+// eg: we want to track the user when he is resizing the browser, resizing or not and how often, once we resize the browser it calls the api 100 times(or more), in D, if user is doing it fast, and then slow, |||||||||||||||    |     |     |    |     |, so when the gap becomes more than delay, then only api call will be made, in T, gaps doesnot matter, what matters is ki agar certain time paar ho jayega toh api call hoga, beech me jb api call ny ho rha toh doesnot matter ki fast h ya slow h.
+
+// eg: how it works on button click, in D, if user clicks the button continuously, so har baar api call ny hoga, tabhi hoga jb clicks ke beech me certain gap hoga nd that gap is delay, in T, tum button click krte raho, jb certain limit reach hoga tabhi api call hoga.
