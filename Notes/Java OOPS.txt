@@ -1,0 +1,26 @@
+###############################
+Abstract Classes:
+
+Instantiation:
+Abstract Class: Cannot be instantiated directly, which means you cannot create an object from an abstract class using the new keyword directly. They are meant to be subclassed.
+Normal Class (Concrete Class): Can be instantiated, meaning you can directly create an instance of such a class.
+
+Abstract Methods:
+Abstract Class: Can have abstract methods. An abstract method is a method that is declared without an implementation (no body) and is marked with the abstract keyword. Subclasses are required to provide an implementation for these abstract methods.
+Normal Class: Cannot have abstract methods. All methods in a normal class should have a full implementation.
+
+###############################
+**In Java, each public class should be declared in a separate file named after the class (except in the case of nested or inner classes). Alternatively, if you insist on having everything in one file, only one class may be declared as public.
+
+**Given the setup you described, you have both Employee and task7 declared as public classes in the same file, which is likely causing the compilation error. You should adjust your code either by:
+
+Moving each public class to its own file (Employee.java and task7.java).
+Ensuring only one class is declared as public (e.g., task7) and the other class (Employee) is not declared as public.
+
+##############################
+Why getters and setters are imp for encapsulating data ?
+Getters and setters are widely used in object-oriented programming languages such as Java to implement the concept of encapsulation. Encapsulation is one of the four fundamental OOP concepts, the others being inheritance, polymorphism, and abstraction. Encapsulation is about bundling the data (attributes) and code (methods) that operate on the data into a single unit or class and restricting access to some of the object’s components. This is usually achieved by:
+
+=> Making the variables of a class private, so they cannot be accessed directly from outside the class. They can only be accessed via methods of their current class.
+=> Providing public getter and setter methods, to get and set the values of the variables.
+

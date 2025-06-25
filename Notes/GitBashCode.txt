@@ -1,0 +1,1831 @@
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject
+$ git init
+Initialized empty Git repository in C:/Users/shaily_priya/Documents/JavaProject/.git/
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (master)
+$ git status
+On branch master
+
+No commits yet
+
+nothing to commit (create/copy files and use "git add" to track)
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (master)
+$ dir /a
+dir: cannot access '/a': No such file or directory
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (master)
+$ ls -a
+./  ../  .git/
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (master)
+$ ls -la .git
+total 11
+drwxr-xr-x 1 AzureAD+ShailyPriya 4096   0 Mar 24 14:20 ./
+drwxr-xr-x 1 AzureAD+ShailyPriya 4096   0 Mar 24 14:20 ../
+-rw-r--r-- 1 AzureAD+ShailyPriya 4096  23 Mar 24 14:20 HEAD
+-rw-r--r-- 1 AzureAD+ShailyPriya 4096 130 Mar 24 14:20 config
+-rw-r--r-- 1 AzureAD+ShailyPriya 4096  73 Mar 24 14:20 description
+drwxr-xr-x 1 AzureAD+ShailyPriya 4096   0 Mar 24 14:20 hooks/
+drwxr-xr-x 1 AzureAD+ShailyPriya 4096   0 Mar 24 14:20 info/
+drwxr-xr-x 1 AzureAD+ShailyPriya 4096   0 Mar 24 14:20 objects/
+drwxr-xr-x 1 AzureAD+ShailyPriya 4096   0 Mar 24 14:20 refs/
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (master)
+$ touch names.txt
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (master)
+$ git status
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        names.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (master)
+$ git add names.txt
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (master)
+$ git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        new file:   names.txt
+
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (master)
+$ git commit -m "names.txt file added"
+[master (root-commit) 4206600] names.txt file added
+ Committer: Shaily Priya <shaily_priya@epam.com>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly:
+
+    git config --global user.name "Your Name"
+    git config --global user.email you@example.com
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 names.txt
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (master)
+$ git status
+On branch master
+nothing to commit, working tree clean
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (master)
+$ vim names.txt
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (master)
+$ cat names.txt
+Shaily Priya
+Working at EPAM
+Learning Java
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (master)
+$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   names.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (master)
+$ git add .
+warning: in the working copy of 'names.txt', LF will be replaced by CRLF the next time Git touches it
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (master)
+$ git status
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        modified:   names.txt
+
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (master)
+$ git restore --staged names.txt
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (master)
+$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   names.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (master)
+$ git add names.txt
+warning: in the working copy of 'names.txt', LF will be replaced by CRLF the next time Git touches it
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (master)
+$ git commit -m "names.txt file modified"
+[master 86db762] names.txt file modified
+ Committer: Shaily Priya <shaily_priya@epam.com>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly:
+
+    git config --global user.name "Your Name"
+    git config --global user.email you@example.com
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 3 insertions(+)
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (master)
+$ git log
+commit 86db762ea20300dcd5d41d4151a730708fff8b2e (HEAD -> master)
+Author: Shaily Priya <shaily_priya@epam.com>
+Date:   Mon Mar 24 15:08:38 2025 +0530
+
+    names.txt file modified
+
+commit 4206600c8bf5f6608a7e7271e84b87830dbde06a
+Author: Shaily Priya <shaily_priya@epam.com>
+Date:   Mon Mar 24 14:44:00 2025 +0530
+
+    names.txt file added
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (master)
+$ git log --online --all --graph --decorate
+fatal: unrecognized argument: --online
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (master)
+$ rm -rf names.txt
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (master)
+$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        deleted:    names.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (master)
+$ git add .
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (master)
+$ git commit -m "names.txt file deleted"
+[master 26e495b] names.txt file deleted
+ Committer: Shaily Priya <shaily_priya@epam.com>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly:
+
+    git config --global user.name "Your Name"
+    git config --global user.email you@example.com
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 3 deletions(-)
+ delete mode 100644 names.txt
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (master)
+$ git log
+commit 26e495b61c1b461313a2711cb509e9a3c5336637 (HEAD -> master)
+Author: Shaily Priya <shaily_priya@epam.com>
+Date:   Mon Mar 24 15:23:14 2025 +0530
+
+    names.txt file deleted
+
+commit 86db762ea20300dcd5d41d4151a730708fff8b2e
+Author: Shaily Priya <shaily_priya@epam.com>
+Date:   Mon Mar 24 15:08:38 2025 +0530
+
+    names.txt file modified
+
+commit 4206600c8bf5f6608a7e7271e84b87830dbde06a
+Author: Shaily Priya <shaily_priya@epam.com>
+Date:   Mon Mar 24 14:44:00 2025 +0530
+
+    names.txt file added
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (master)
+$ ^C
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (master)
+$ git reset 4206600c8bf5f6608a7e7271e84b87830dbde06a
+Unstaged changes after reset:
+D       names.txt
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (master)
+$ git log
+commit 4206600c8bf5f6608a7e7271e84b87830dbde06a (HEAD -> master)
+Author: Shaily Priya <shaily_priya@epam.com>
+Date:   Mon Mar 24 14:44:00 2025 +0530
+
+    names.txt file added
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (master)
+$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        deleted:    names.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (master)
+$ git add .
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (master)
+$ git status
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        deleted:    names.txt
+
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (master)
+$ touch surnames.txt
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (master)
+$ git add .
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (master)
+$ git status
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        renamed:    names.txt -> surnames.txt
+
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (master)
+$ vim surnames.txt
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (master)
+$ touch houses.txt
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (master)
+$ git add .
+warning: in the working copy of 'surnames.txt', LF will be replaced by CRLF the next time Git touches it
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (master)
+$ git status
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        renamed:    names.txt -> houses.txt
+        new file:   surnames.txt
+
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (master)
+$ ls -l
+total 1
+-rw-r--r-- 1 AzureAD+ShailyPriya 4096   0 Mar 24 16:12 houses.txt
+-rw-r--r-- 1 AzureAD+ShailyPriya 4096 322 Mar 24 16:11 surnames.txt
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (master)
+$ git stash
+Saved working directory and index state WIP on master: 4206600 names.txt file added
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (master)
+$ git status
+On branch master
+nothing to commit, working tree clean
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (master)
+$ git log
+commit 4206600c8bf5f6608a7e7271e84b87830dbde06a (HEAD -> master)
+Author: Shaily Priya <shaily_priya@epam.com>
+Date:   Mon Mar 24 14:44:00 2025 +0530
+
+    names.txt file added
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (master)
+$ cat names.txt
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (master)
+$ git stash pop
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   houses.txt
+        new file:   surnames.txt
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        deleted:    names.txt
+
+Dropped refs/stash@{0} (491553dd5736345745c77dbcbb0936306573e82c)
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (master)
+$ git add .
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (master)
+$ git stash
+Saved working directory and index state WIP on master: 4206600 names.txt file added
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (master)
+$ git stash clear
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (master)
+$
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (master)
+$ git remote add origin https://git.epam.com/shaily_priya/practice
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (master)
+$ git remote -v
+origin  https://git.epam.com/shaily_priya/practice (fetch)
+origin  https://git.epam.com/shaily_priya/practice (push)
+
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (master)
+$ git push origin master
+warning: redirecting to https://git.epam.com/shaily_priya/practice.git/
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Writing objects: 100% (3/3), 254 bytes | 254.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+remote:
+remote: To create a merge request for master, visit:
+remote:   https://git.epam.com/shaily_priya/practice/-/merge_requests/new?merge_request%5Bsource_branch%5D=master
+remote:
+To https://git.epam.com/shaily_priya/practice
+   58a2961..11a951f  master -> master
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (master)
+$ touch hotel.txt
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (master)
+$ git add .
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (master)
+$ git commit -m "hotel.txt added"
+[master 2e69a0b] hotel.txt added
+ Committer: Shaily Priya <shaily_priya@epam.com>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly:
+
+    git config --global user.name "Your Name"
+    git config --global user.email you@example.com
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 hotel.txt
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (master)
+$ touch rollno.txt
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (master)
+$ git add .
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (master)
+$ git commit -m "roll number added"
+[master 2fd4511] roll number added
+ Committer: Shaily Priya <shaily_priya@epam.com>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly:
+
+    git config --global user.name "Your Name"
+    git config --global user.email you@example.com
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 rollno.txt
+
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (master)
+$ ls -a
+./  ../  .git/  hotel.txt  names.txt  rollno.txt
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (master)
+$ vim rollno.txt
+
+[1]+  Stopped                 vim rollno.txt
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (master)
+$ vim rollno.txt
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (master)
+$ cat rollno.txt
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (master)
+$ ls -a
+./  ../  .git/  .rollno.txt.swp  hotel.txt  names.txt  rollno.txt
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (master)
+$ git rm rollno.txt.swap
+fatal: pathspec 'rollno.txt.swap' did not match any files
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (master)
+$ ^C
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (master)
+$ rm .rollno.txt.swp
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (master)
+$ ls -a
+./  ../  .git/  hotel.txt  names.txt  rollno.txt
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (master)
+$ echo 1234 >> rollno.txt
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (master)
+$ cat rollno.txt
+1234
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (master)
+$ echo 5678 >> rollno.txt
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (master)
+$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   rollno.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (master)
+$ git add .
+warning: in the working copy of 'rollno.txt', LF will be replaced by CRLF the next time Git touches it
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (master)
+$ git commit -m "changes in rollno.txt"
+[master 449e1fd] changes in rollno.txt
+ Committer: Shaily Priya <shaily_priya@epam.com>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly:
+
+    git config --global user.name "Your Name"
+    git config --global user.email you@example.com
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 2 insertions(+)
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (master)
+$ git log
+commit 449e1fd45a02aaebccba2d186813713ebf7a1950 (HEAD -> master)
+Author: Shaily Priya <shaily_priya@epam.com>
+Date:   Tue Mar 25 09:07:37 2025 +0530
+
+    changes in rollno.txt
+
+commit 2fd45119e42c751b603dadc5e1af9debd0696dc7
+Author: Shaily Priya <shaily_priya@epam.com>
+Date:   Mon Mar 24 17:06:48 2025 +0530
+
+    roll number added
+
+commit 2e69a0bb652da2247ac8f4eb2997124cd7a597e9
+Author: Shaily Priya <shaily_priya@epam.com>
+Date:   Mon Mar 24 17:06:18 2025 +0530
+
+    hotel.txt added
+
+commit 11a951f99013ef6e68f2dff0c9a8f0dabb4d9ce8 (origin/master)
+Author: Shaily Priya <shaily_priya@epam.com>
+Date:   Mon Mar 24 16:53:59 2025 +0530
+
+    msggg
+
+commit 58a29615009962d3686d6f2b4828b67129292cba
+Author: Shaily Priya <shaily_priya@epam.com>
+Date:   Mon Mar 24 16:51:52 2025 +0530
+
+    msg
+
+commit 4206600c8bf5f6608a7e7271e84b87830dbde06a
+Author: Shaily Priya <shaily_priya@epam.com>
+Date:   Mon Mar 24 14:44:00 2025 +0530
+
+    names.txt file added
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (master)
+$ ^C
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (master)
+$ ls -a
+./  ../  .git/  hotel.txt  names.txt  rollno.txt
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (master)
+$ ls -a .git
+./   COMMIT_EDITMSG  ORIG_HEAD  description  index  logs/     refs/
+../  HEAD            config     hooks/       info/  objects/
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (master)
+$ git branch feature
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (master)
+$ git chekout feature
+git: 'chekout' is not a git command. See 'git --help'.
+
+The most similar command is
+        checkout
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (master)
+$ git checkout feature
+Switched to branch 'feature'
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (feature)
+$ git commit
+On branch feature
+nothing to commit, working tree clean
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (feature)
+$ git merge feature
+Already up to date.
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (feature)
+$ git checkout master
+Switched to branch 'master'
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (master)
+$ git commit
+On branch master
+nothing to commit, working tree clean
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (master)
+$ git merge feature
+Already up to date.
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (master)
+$ git remote -v
+origin  https://git.epam.com/shaily_priya/practice (fetch)
+origin  https://git.epam.com/shaily_priya/practice (push)
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (master)
+$ git log
+commit 449e1fd45a02aaebccba2d186813713ebf7a1950 (HEAD -> master, feature)
+Author: Shaily Priya <shaily_priya@epam.com>
+Date:   Tue Mar 25 09:07:37 2025 +0530
+
+    changes in rollno.txt
+
+commit 2fd45119e42c751b603dadc5e1af9debd0696dc7
+Author: Shaily Priya <shaily_priya@epam.com>
+Date:   Mon Mar 24 17:06:48 2025 +0530
+
+    roll number added
+
+commit 2e69a0bb652da2247ac8f4eb2997124cd7a597e9
+Author: Shaily Priya <shaily_priya@epam.com>
+Date:   Mon Mar 24 17:06:18 2025 +0530
+
+    hotel.txt added
+
+commit 11a951f99013ef6e68f2dff0c9a8f0dabb4d9ce8 (origin/master)
+Author: Shaily Priya <shaily_priya@epam.com>
+Date:   Mon Mar 24 16:53:59 2025 +0530
+
+    msggg
+
+commit 58a29615009962d3686d6f2b4828b67129292cba
+Author: Shaily Priya <shaily_priya@epam.com>
+Date:   Mon Mar 24 16:51:52 2025 +0530
+
+    msg
+
+commit 4206600c8bf5f6608a7e7271e84b87830dbde06a
+Author: Shaily Priya <shaily_priya@epam.com>
+Date:   Mon Mar 24 14:44:00 2025 +0530
+
+    names.txt file added
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (master)
+$ git push origin master
+warning: redirecting to https://git.epam.com/shaily_priya/practice.git/
+Enumerating objects: 9, done.
+Counting objects: 100% (9/9), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (6/6), done.
+Writing objects: 100% (8/8), 689 bytes | 172.00 KiB/s, done.
+Total 8 (delta 2), reused 0 (delta 0), pack-reused 0 (from 0)
+remote:
+remote: To create a merge request for master, visit:
+remote:   https://git.epam.com/shaily_priya/practice/-/merge_requests/new?merge_request%5Bsource_branch%5D=master
+remote:
+To https://git.epam.com/shaily_priya/practice
+   11a951f..449e1fd  master -> master
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (master)
+$ echo Food Court Chinese >> hotel.txt
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (master)
+$ cat hotel.txt
+Food Court Chinese
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (master)
+$ git add .
+warning: in the working copy of 'hotel.txt', LF will be replaced by CRLF the next time Git touches it
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (master)
+$ git commit -m "modified hotel.txt"
+[master e2a1726] modified hotel.txt
+ Committer: Shaily Priya <shaily_priya@epam.com>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly:
+
+    git config --global user.name "Your Name"
+    git config --global user.email you@example.com
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+)
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (master)
+$ git push origin master
+warning: redirecting to https://git.epam.com/shaily_priya/practice.git/
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 332 bytes | 110.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+remote:
+remote: To create a merge request for master, visit:
+remote:   https://git.epam.com/shaily_priya/practice/-/merge_requests/new?merge_request%5Bsource_branch%5D=master
+remote:
+To https://git.epam.com/shaily_priya/practice
+   449e1fd..e2a1726  master -> master
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (master)
+$ git log
+commit e2a1726a3936dee92502d979b6b7d714746b4fdc (HEAD -> master, origin/master)
+Author: Shaily Priya <shaily_priya@epam.com>
+Date:   Tue Mar 25 10:25:14 2025 +0530
+
+    modified hotel.txt
+
+commit 449e1fd45a02aaebccba2d186813713ebf7a1950 (feature)
+Author: Shaily Priya <shaily_priya@epam.com>
+Date:   Tue Mar 25 09:07:37 2025 +0530
+
+    changes in rollno.txt
+
+commit 2fd45119e42c751b603dadc5e1af9debd0696dc7
+Author: Shaily Priya <shaily_priya@epam.com>
+Date:   Mon Mar 24 17:06:48 2025 +0530
+
+    roll number added
+
+commit 2e69a0bb652da2247ac8f4eb2997124cd7a597e9
+Author: Shaily Priya <shaily_priya@epam.com>
+Date:   Mon Mar 24 17:06:18 2025 +0530
+
+    hotel.txt added
+
+commit 11a951f99013ef6e68f2dff0c9a8f0dabb4d9ce8
+Author: Shaily Priya <shaily_priya@epam.com>
+Date:   Mon Mar 24 16:53:59 2025 +0530
+
+    msggg
+
+commit 58a29615009962d3686d6f2b4828b67129292cba
+Author: Shaily Priya <shaily_priya@epam.com>
+Date:   Mon Mar 24 16:51:52 2025 +0530
+
+    msg
+
+commit 4206600c8bf5f6608a7e7271e84b87830dbde06a
+Author: Shaily Priya <shaily_priya@epam.com>
+Date:   Mon Mar 24 14:44:00 2025 +0530
+
+    names.txt file added
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (master)
+$ ^C
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (master)
+$ git clone https://git.epam.com/shaily_priya/payroll-system.git
+Cloning into 'payroll-system'...
+remote: Enumerating objects: 39, done.
+remote: Total 39 (delta 0), reused 0 (delta 0), pack-reused 39
+Receiving objects: 100% (39/39), 8.33 KiB | 1.39 MiB/s, done.
+Resolving deltas: 100% (16/16), done.
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (master)
+$ cd payroll-system
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject/payroll-system (main)
+$ cat README.md
+▒▒Payroll-System
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject/payroll-system (main)
+$ git remote add upstream https://git.epam.com/pankajsunil_ganage/payroll-system.git
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject/payroll-system (main)
+$ git remote -v
+origin  https://git.epam.com/shaily_priya/payroll-system.git (fetch)
+origin  https://git.epam.com/shaily_priya/payroll-system.git (push)
+upstream        https://git.epam.com/pankajsunil_ganage/payroll-system.git (fetch)
+upstream        https://git.epam.com/pankajsunil_ganage/payroll-system.git (push)
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject/payroll-system (main)
+$ ^C
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject/payroll-system (main)
+$ vim README.md
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject/payroll-system (main)
+$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   README.md
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject/payroll-system (main)
+$ git branch shaily
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject/payroll-system (main)
+$ git checkout shaily
+M       README.md
+Switched to branch 'shaily'
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject/payroll-system (shaily)
+$ git add .
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject/payroll-system (shaily)
+$ git commit -m "shaily added a message"
+[shaily 399a291] shaily added a message
+ Committer: Shaily Priya <shaily_priya@epam.com>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly:
+
+    git config --global user.name "Your Name"
+    git config --global user.email you@example.com
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject/payroll-system (shaily)
+$ git log
+commit 399a291642b61cc0caaaa8fb4c8cd2bb5b5aa645 (HEAD -> shaily)
+Author: Shaily Priya <shaily_priya@epam.com>
+Date:   Tue Mar 25 11:19:45 2025 +0530
+
+    shaily added a message
+
+commit 602dcac9e6d42cd7614d62991c249aea039bd9de (origin/main, origin/HEAD, main)
+Author: Pankaj Sunil Ganage <pankajsunil_ganage@epam.com>
+Date:   Tue Feb 11 19:09:33 2025 +0530
+
+    task 14 generics completed
+
+commit 244551ca64a50e53fd9c742e6d989907ecf4da9b
+Author: Pankaj Sunil Ganage <pankajsunil_ganage@epam.com>
+Date:   Tue Feb 11 16:54:10 2025 +0530
+
+    Task 12 Searching and sorting complete
+
+commit fa61784e545e4eccab28779dab2467ca0e45aba1
+Author: Pankaj Sunil Ganage <pankajsunil_ganage@epam.com>
+Date:   Tue Feb 11 15:06:09 2025 +0530
+
+    Task 11 Collection Framework complete
+
+commit 868eb0b9f0953840e32597433ab4ed91784e5db3
+Author: Pankaj Sunil Ganage <pankajsunil_ganage@epam.com>
+Date:   Mon Feb 10 18:03:47 2025 +0530
+
+    Task 9 Array Challenge complete
+
+commit bb6f9cb6a749ac2c7dab148e9ee6beff3a468ed4
+Author: Pankaj Sunil Ganage <pankajsunil_ganage@epam.com>
+Date:   Mon Feb 10 17:17:03 2025 +0530
+
+    Task 8 Abstract class and Interface
+
+commit a229bc9a63141f3b209700954d5e1a56711abc30
+Author: Pankaj Sunil Ganage <pankajsunil_ganage@epam.com>
+Date:   Mon Feb 10 16:28:40 2025 +0530
+
+    Task-Encapsulating Sensitive Data complete
+
+commit 3fab63b9b69919167ebed22115968bfc34f20f69
+Author: Pankaj Sunil Ganage <pankajsunil_ganage@epam.com>
+Date:   Mon Feb 10 16:26:54 2025 +0530
+
+...skipping...
+commit 399a291642b61cc0caaaa8fb4c8cd2bb5b5aa645 (HEAD -> shaily)
+Author: Shaily Priya <shaily_priya@epam.com>
+Date:   Tue Mar 25 11:19:45 2025 +0530
+
+    shaily added a message
+
+commit 602dcac9e6d42cd7614d62991c249aea039bd9de (origin/main, origin/HEAD, main)
+Author: Pankaj Sunil Ganage <pankajsunil_ganage@epam.com>
+Date:   Tue Feb 11 19:09:33 2025 +0530
+
+    task 14 generics completed
+
+commit 244551ca64a50e53fd9c742e6d989907ecf4da9b
+Author: Pankaj Sunil Ganage <pankajsunil_ganage@epam.com>
+Date:   Tue Feb 11 16:54:10 2025 +0530
+
+    Task 12 Searching and sorting complete
+
+commit fa61784e545e4eccab28779dab2467ca0e45aba1
+Author: Pankaj Sunil Ganage <pankajsunil_ganage@epam.com>
+Date:   Tue Feb 11 15:06:09 2025 +0530
+
+    Task 11 Collection Framework complete
+
+commit 868eb0b9f0953840e32597433ab4ed91784e5db3
+Author: Pankaj Sunil Ganage <pankajsunil_ganage@epam.com>
+Date:   Mon Feb 10 18:03:47 2025 +0530
+
+    Task 9 Array Challenge complete
+
+commit bb6f9cb6a749ac2c7dab148e9ee6beff3a468ed4
+Author: Pankaj Sunil Ganage <pankajsunil_ganage@epam.com>
+Date:   Mon Feb 10 17:17:03 2025 +0530
+
+    Task 8 Abstract class and Interface
+
+commit a229bc9a63141f3b209700954d5e1a56711abc30
+Author: Pankaj Sunil Ganage <pankajsunil_ganage@epam.com>
+Date:   Mon Feb 10 16:28:40 2025 +0530
+
+    Task-Encapsulating Sensitive Data complete
+
+commit 3fab63b9b69919167ebed22115968bfc34f20f69
+Author: Pankaj Sunil Ganage <pankajsunil_ganage@epam.com>
+Date:   Mon Feb 10 16:26:54 2025 +0530
+
+:
+commit 399a291642b61cc0caaaa8fb4c8cd2bb5b5aa645 (HEAD -> shaily)
+Author: Shaily Priya <shaily_priya@epam.com>
+Date:   Tue Mar 25 11:19:45 2025 +0530
+
+    shaily added a message
+
+commit 602dcac9e6d42cd7614d62991c249aea039bd9de (origin/main, origin/HEAD, main)
+Author: Pankaj Sunil Ganage <pankajsunil_ganage@epam.com>
+Date:   Tue Feb 11 19:09:33 2025 +0530
+
+    task 14 generics completed
+
+commit 244551ca64a50e53fd9c742e6d989907ecf4da9b
+Author: Pankaj Sunil Ganage <pankajsunil_ganage@epam.com>
+Date:   Tue Feb 11 16:54:10 2025 +0530
+
+    Task 12 Searching and sorting complete
+
+commit fa61784e545e4eccab28779dab2467ca0e45aba1
+Author: Pankaj Sunil Ganage <pankajsunil_ganage@epam.com>
+Date:   Tue Feb 11 15:06:09 2025 +0530
+
+    Task 11 Collection Framework complete
+
+commit 868eb0b9f0953840e32597433ab4ed91784e5db3
+Author: Pankaj Sunil Ganage <pankajsunil_ganage@epam.com>
+Date:   Mon Feb 10 18:03:47 2025 +0530
+
+    Task 9 Array Challenge complete
+
+commit bb6f9cb6a749ac2c7dab148e9ee6beff3a468ed4
+Author: Pankaj Sunil Ganage <pankajsunil_ganage@epam.com>
+Date:   Mon Feb 10 17:17:03 2025 +0530
+
+    Task 8 Abstract class and Interface
+
+commit a229bc9a63141f3b209700954d5e1a56711abc30
+Author: Pankaj Sunil Ganage <pankajsunil_ganage@epam.com>
+Date:   Mon Feb 10 16:28:40 2025 +0530
+
+    Task-Encapsulating Sensitive Data complete
+
+commit 3fab63b9b69919167ebed22115968bfc34f20f69
+Author: Pankaj Sunil Ganage <pankajsunil_ganage@epam.com>
+Date:   Mon Feb 10 16:26:54 2025 +0530
+
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject/payroll-system (shaily)
+$
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject/payroll-system (shaily)
+$ git push origin shaily
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 351 bytes | 351.00 KiB/s, done.
+Total 3 (delta 1), reused 0 (delta 0), pack-reused 0 (from 0)
+remote:
+remote: To create a merge request for shaily, visit:
+remote:   https://git.epam.com/shaily_priya/payroll-system/-/merge_requests/new?merge_request%5Bsource_branch%5D=shaily
+remote:
+To https://git.epam.com/shaily_priya/payroll-system.git
+ * [new branch]      shaily -> shaily
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject/payroll-system (shaily)
+$
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject/payroll-system (shaily)
+$ gigit config --global core.editor "code --wait"
+bash: $'\302\226\302\226git': command not found
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject/payroll-system (shaily)
+gigit config --global core.editor "code --wait"
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject/payroll-system (shaily)
+$ git config --global core.editor "code --wait"
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject/payroll-system (shaily)
+$ git config --global --get core.editor
+code --wait
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject/payroll-system (shaily)
+$ ls -a
+./             Employee.java          PartTimeContract.java  README.md
+../            EmployeeContract.java  PartTimeEmployee.java  SalaryComparator.java
+.git/          FullTimeContract.java  PayrollSystem.java     Task8/
+CommentedCode  FullTimeEmployee.java  PayrollUtils.java
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject/payroll-system (shaily)
+$ README.md
+bash: README.md: command not found
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject/payroll-system (shaily)
+$ code .
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject/payroll-system (shaily)
+$ git status
+On branch shaily
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   README.md
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject/payroll-system (shaily)
+$ git add .
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject/payroll-system (shaily)
+$ git commit -m "add this feature to your prj"
+[shaily ebcee55] add this feature to your prj
+ Committer: Shaily Priya <shaily_priya@epam.com>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly:
+
+    git config --global user.name "Your Name"
+    git config --global user.email you@example.com
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject/payroll-system (shaily)
+$ git push
+fatal: The current branch shaily has no upstream branch.
+To push the current branch and set the remote as upstream, use
+
+    git push --set-upstream origin shaily
+
+To have this happen automatically for branches without a tracking
+upstream, see 'push.autoSetupRemote' in 'git help config'.
+
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject/payroll-system (shaily)
+$ ^C
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject/payroll-system (shaily)
+$  git push --set-upstream origin shaily
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 341 bytes | 341.00 KiB/s, done.
+Total 3 (delta 1), reused 0 (delta 0), pack-reused 0 (from 0)
+remote:
+remote: To create a merge request for shaily, visit:
+remote:   https://git.epam.com/shaily_priya/payroll-system/-/merge_requests/new?merge_request%5Bsource_branch%5D=shaily
+remote:
+To https://git.epam.com/shaily_priya/payroll-system.git
+   399a291..ebcee55  shaily -> shaily
+branch 'shaily' set up to track 'origin/shaily'.
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject/payroll-system (shaily)
+$ git checkout main
+Switched to branch 'main'
+Your branch is up to date with 'origin/main'.
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject/payroll-system (main)
+$ git merge shaily
+Updating 602dcac..ebcee55
+Fast-forward
+ README.md | Bin 34 -> 88 bytes
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject/payroll-system (main)
+$ git status
+On branch main
+Your branch is ahead of 'origin/main' by 2 commits.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject/payroll-system (main)
+$ git status
+On branch main
+Your branch is ahead of 'origin/main' by 2 commits.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject/payroll-system (main)
+$ git push
+Total 0 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+To https://git.epam.com/shaily_priya/payroll-system.git
+   602dcac..ebcee55  main -> main
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject/payroll-system (main)
+$ git log
+commit ebcee555a682cf206a42c88b09e0f88b34438730 (HEAD -> main, origin/shaily, origin
+/main, origin/HEAD, shaily)
+Author: Shaily Priya <shaily_priya@epam.com>
+Date:   Tue Mar 25 14:45:32 2025 +0530
+
+    add this feature to your prj
+
+commit 399a291642b61cc0caaaa8fb4c8cd2bb5b5aa645
+Author: Shaily Priya <shaily_priya@epam.com>
+Date:   Tue Mar 25 11:19:45 2025 +0530
+
+    shaily added a message
+
+commit 602dcac9e6d42cd7614d62991c249aea039bd9de
+Author: Pankaj Sunil Ganage <pankajsunil_ganage@epam.com>
+Date:   Tue Feb 11 19:09:33 2025 +0530
+
+    task 14 generics completed
+
+commit 244551ca64a50e53fd9c742e6d989907ecf4da9b
+Author: Pankaj Sunil Ganage <pankajsunil_ganage@epam.com>
+Date:   Tue Feb 11 16:54:10 2025 +0530
+
+    Task 12 Searching and sorting complete
+
+commit fa61784e545e4eccab28779dab2467ca0e45aba1
+Author: Pankaj Sunil Ganage <pankajsunil_ganage@epam.com>
+Date:   Tue Feb 11 15:06:09 2025 +0530
+
+    Task 11 Collection Framework complete
+
+commit 868eb0b9f0953840e32597433ab4ed91784e5db3
+Author: Pankaj Sunil Ganage <pankajsunil_ganage@epam.com>
+Date:   Mon Feb 10 18:03:47 2025 +0530
+
+    Task 9 Array Challenge complete
+
+commit bb6f9cb6a749ac2c7dab148e9ee6beff3a468ed4
+Author: Pankaj Sunil Ganage <pankajsunil_ganage@epam.com>
+Date:   Mon Feb 10 17:17:03 2025 +0530
+
+    Task 8 Abstract class and Interface
+
+commit a229bc9a63141f3b209700954d5e1a56711abc30
+Author: Pankaj Sunil Ganage <pankajsunil_ganage@epam.com>
+Date:   Mon Feb 10 16:28:40 2025 +0530
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject/payroll-system (main)
+$
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject/payroll-system (main)
+$ touch names.txt
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject/payroll-system (main)
+$ git log
+commit ebcee555a682cf206a42c88b09e0f88b34438730 (HEAD -> main, origin/shaily, origin/main, origin/HEAD, shaily)
+Author: Shaily Priya <shaily_priya@epam.com>
+Date:   Tue Mar 25 14:45:32 2025 +0530
+
+    add this feature to your prj
+
+commit 399a291642b61cc0caaaa8fb4c8cd2bb5b5aa645
+Author: Shaily Priya <shaily_priya@epam.com>
+Date:   Tue Mar 25 11:19:45 2025 +0530
+
+    shaily added a message
+
+commit 602dcac9e6d42cd7614d62991c249aea039bd9de
+Author: Pankaj Sunil Ganage <pankajsunil_ganage@epam.com>
+Date:   Tue Feb 11 19:09:33 2025 +0530
+
+    task 14 generics completed
+
+commit 244551ca64a50e53fd9c742e6d989907ecf4da9b
+Author: Pankaj Sunil Ganage <pankajsunil_ganage@epam.com>
+Date:   Tue Feb 11 16:54:10 2025 +0530
+
+    Task 12 Searching and sorting complete
+
+commit fa61784e545e4eccab28779dab2467ca0e45aba1
+Author: Pankaj Sunil Ganage <pankajsunil_ganage@epam.com>
+Date:   Tue Feb 11 15:06:09 2025 +0530
+
+    Task 11 Collection Framework complete
+
+commit 868eb0b9f0953840e32597433ab4ed91784e5db3
+Author: Pankaj Sunil Ganage <pankajsunil_ganage@epam.com>
+Date:   Mon Feb 10 18:03:47 2025 +0530
+
+    Task 9 Array Challenge complete
+
+commit bb6f9cb6a749ac2c7dab148e9ee6beff3a468ed4
+Author: Pankaj Sunil Ganage <pankajsunil_ganage@epam.com>
+Date:   Mon Feb 10 17:17:03 2025 +0530
+
+    Task 8 Abstract class and Interface
+
+commit a229bc9a63141f3b209700954d5e1a56711abc30
+Author: Pankaj Sunil Ganage <pankajsunil_ganage@epam.com>
+Date:   Mon Feb 10 16:28:40 2025 +0530
+
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject/payroll-system (main)
+$
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject/payroll-system (main)
+$ git checkout shaily
+Switched to branch 'shaily'
+Your branch is up to date with 'origin/shaily'.
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject/payroll-system (shaily)
+$ touch names.txt
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject/payroll-system (shaily)
+$ git add .
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject/payroll-system (shaily)
+$ git commit -m names.txt added
+error: pathspec 'added' did not match any file(s) known to git
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject/payroll-system (shaily)
+$ git commit -m "names.txt added"
+[shaily 3aced62] names.txt added
+ Committer: Shaily Priya <shaily_priya@epam.com>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly:
+
+    git config --global user.name "Your Name"
+    git config --global user.email you@example.com
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 names.txt
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject/payroll-system (shaily)
+$ git push origin shaily
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 277 bytes | 55.00 KiB/s, done.
+Total 3 (delta 1), reused 0 (delta 0), pack-reused 0 (from 0)
+remote:
+remote: To create a merge request for shaily, visit:
+remote:   https://git.epam.com/shaily_priya/payroll-system/-/merge_requests/new?merge_request%5Bsource_branch%5D=shaily
+remote:
+To https://git.epam.com/shaily_priya/payroll-system.git
+   ebcee55..3aced62  shaily -> shaily
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject/payroll-system (shaily)
+$ git log
+commit 3aced62d1583e73bdcbce4067dde4d20ff431db9 (HEAD -> shaily, origin/shaily)
+Author: Shaily Priya <shaily_priya@epam.com>
+Date:   Tue Mar 25 17:26:51 2025 +0530
+
+    names.txt added
+
+commit ebcee555a682cf206a42c88b09e0f88b34438730 (origin/main, origin/HEAD, main)
+Author: Shaily Priya <shaily_priya@epam.com>
+Date:   Tue Mar 25 14:45:32 2025 +0530
+
+    add this feature to your prj
+
+commit 399a291642b61cc0caaaa8fb4c8cd2bb5b5aa645
+Author: Shaily Priya <shaily_priya@epam.com>
+Date:   Tue Mar 25 11:19:45 2025 +0530
+
+    shaily added a message
+
+commit 602dcac9e6d42cd7614d62991c249aea039bd9de
+Author: Pankaj Sunil Ganage <pankajsunil_ganage@epam.com>
+Date:   Tue Feb 11 19:09:33 2025 +0530
+
+    task 14 generics completed
+
+commit 244551ca64a50e53fd9c742e6d989907ecf4da9b
+Author: Pankaj Sunil Ganage <pankajsunil_ganage@epam.com>
+Date:   Tue Feb 11 16:54:10 2025 +0530
+
+    Task 12 Searching and sorting complete
+
+commit fa61784e545e4eccab28779dab2467ca0e45aba1
+Author: Pankaj Sunil Ganage <pankajsunil_ganage@epam.com>
+Date:   Tue Feb 11 15:06:09 2025 +0530
+
+    Task 11 Collection Framework complete
+
+commit 868eb0b9f0953840e32597433ab4ed91784e5db3
+Author: Pankaj Sunil Ganage <pankajsunil_ganage@epam.com>
+Date:   Mon Feb 10 18:03:47 2025 +0530
+
+    Task 9 Array Challenge complete
+
+commit bb6f9cb6a749ac2c7dab148e9ee6beff3a468ed4
+Author: Pankaj Sunil Ganage <pankajsunil_ganage@epam.com>
+Date:   Mon Feb 10 17:17:03 2025 +0530
+
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject/payroll-system (shaily)
+$
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject/payroll-system (shaily)
+$ git reset ebcee555a682cf206a42c88b09e0f88b34438730
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject/payroll-system (shaily)
+$ git status
+On branch shaily
+Your branch is behind 'origin/shaily' by 1 commit, and can be fast-forwarded.
+  (use "git pull" to update your local branch)
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        names.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject/payroll-system (shaily)
+$ git add .
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject/payroll-system (shaily)
+$ git stash
+Saved working directory and index state WIP on shaily: ebcee55 add this feature to your prj
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject/payroll-system (shaily)
+$ git log
+commit ebcee555a682cf206a42c88b09e0f88b34438730 (HEAD -> shaily, origin/main, origin/HEAD, main)
+Author: Shaily Priya <shaily_priya@epam.com>
+Date:   Tue Mar 25 14:45:32 2025 +0530
+
+    add this feature to your prj
+
+commit 399a291642b61cc0caaaa8fb4c8cd2bb5b5aa645
+Author: Shaily Priya <shaily_priya@epam.com>
+Date:   Tue Mar 25 11:19:45 2025 +0530
+
+    shaily added a message
+
+commit 602dcac9e6d42cd7614d62991c249aea039bd9de
+Author: Pankaj Sunil Ganage <pankajsunil_ganage@epam.com>
+Date:   Tue Feb 11 19:09:33 2025 +0530
+
+    task 14 generics completed
+
+commit 244551ca64a50e53fd9c742e6d989907ecf4da9b
+Author: Pankaj Sunil Ganage <pankajsunil_ganage@epam.com>
+Date:   Tue Feb 11 16:54:10 2025 +0530
+
+    Task 12 Searching and sorting complete
+
+commit fa61784e545e4eccab28779dab2467ca0e45aba1
+Author: Pankaj Sunil Ganage <pankajsunil_ganage@epam.com>
+Date:   Tue Feb 11 15:06:09 2025 +0530
+
+    Task 11 Collection Framework complete
+
+commit 868eb0b9f0953840e32597433ab4ed91784e5db3
+Author: Pankaj Sunil Ganage <pankajsunil_ganage@epam.com>
+Date:   Mon Feb 10 18:03:47 2025 +0530
+
+    Task 9 Array Challenge complete
+
+commit bb6f9cb6a749ac2c7dab148e9ee6beff3a468ed4
+Author: Pankaj Sunil Ganage <pankajsunil_ganage@epam.com>
+Date:   Mon Feb 10 17:17:03 2025 +0530
+
+    Task 8 Abstract class and Interface
+
+commit a229bc9a63141f3b209700954d5e1a56711abc30
+Author: Pankaj Sunil Ganage <pankajsunil_ganage@epam.com>
+Date:   Mon Feb 10 16:28:40 2025 +0530
+
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject/payroll-system (shaily)
+$
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject/payroll-system (shaily)
+$ git push origin shaily -f
+Total 0 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+remote:
+remote: To create a merge request for shaily, visit:
+remote:   https://git.epam.com/shaily_priya/payroll-system/-/merge_requests/new?merge_request%5Bsource_branch%5D=shaily
+remote:
+To https://git.epam.com/shaily_priya/payroll-system.git
+ + 3aced62...ebcee55 shaily -> shaily (forced update)
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject/payroll-system (shaily)
+$ git checkout main
+Switched to branch 'main'
+Your branch is up to date with 'origin/main'.
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject/payroll-system (main)
+$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject/payroll-system (main)
+$ git log
+commit ebcee555a682cf206a42c88b09e0f88b34438730 (HEAD -> main, origin/shaily, origin/main, origin/HEAD, shaily)
+Author: Shaily Priya <shaily_priya@epam.com>
+Date:   Tue Mar 25 14:45:32 2025 +0530
+
+    add this feature to your prj
+
+commit 399a291642b61cc0caaaa8fb4c8cd2bb5b5aa645
+Author: Shaily Priya <shaily_priya@epam.com>
+Date:   Tue Mar 25 11:19:45 2025 +0530
+
+    shaily added a message
+
+commit 602dcac9e6d42cd7614d62991c249aea039bd9de
+Author: Pankaj Sunil Ganage <pankajsunil_ganage@epam.com>
+Date:   Tue Feb 11 19:09:33 2025 +0530
+
+    task 14 generics completed
+
+commit 244551ca64a50e53fd9c742e6d989907ecf4da9b
+Author: Pankaj Sunil Ganage <pankajsunil_ganage@epam.com>
+Date:   Tue Feb 11 16:54:10 2025 +0530
+
+    Task 12 Searching and sorting complete
+
+commit fa61784e545e4eccab28779dab2467ca0e45aba1
+Author: Pankaj Sunil Ganage <pankajsunil_ganage@epam.com>
+Date:   Tue Feb 11 15:06:09 2025 +0530
+
+    Task 11 Collection Framework complete
+
+commit 868eb0b9f0953840e32597433ab4ed91784e5db3
+Author: Pankaj Sunil Ganage <pankajsunil_ganage@epam.com>
+Date:   Mon Feb 10 18:03:47 2025 +0530
+
+    Task 9 Array Challenge complete
+
+commit bb6f9cb6a749ac2c7dab148e9ee6beff3a468ed4
+Author: Pankaj Sunil Ganage <pankajsunil_ganage@epam.com>
+Date:   Mon Feb 10 17:17:03 2025 +0530
+
+    Task 8 Abstract class and Interface
+
+commit a229bc9a63141f3b209700954d5e1a56711abc30
+Author: Pankaj Sunil Ganage <pankajsunil_ganage@epam.com>
+Date:   Mon Feb 10 16:28:40 2025 +0530
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject/payroll-system (main)
+$ git fetch --all --prune
+Fetching origin
+Fetching upstream
+remote: Enumerating objects: 6, done.
+remote: Counting objects: 100% (6/6), done.
+remote: Compressing objects: 100% (3/3), done.
+remote: Total 4 (delta 2), reused 2 (delta 1), pack-reused 0
+Unpacking objects: 100% (4/4), 458 bytes | 19.00 KiB/s, done.
+From https://git.epam.com/pankajsunil_ganage/payroll-system
+ * [new branch]      main       -> upstream/main
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject/payroll-system (main)
+$ git reset --hard upstream/main
+HEAD is now at 0801b0a Merge branch 'main' into 'main'
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject/payroll-system (main)
+$ git log
+commit 0801b0a3aed8530b95af39619fc99610291718ce (HEAD -> main, upstream/main)
+Merge: 602dcac b89a927
+Author: Pankaj Sunil Ganage <pankajsunil_ganage@epam.com>
+Date:   Tue Mar 25 09:28:29 2025 +0000
+
+    Merge branch 'main' into 'main'
+
+    feature1
+
+    See merge request pankajsunil_ganage/payroll-system!1
+
+commit b89a927a7fe664618120c42777063bc07345121a
+Author: Shaily Priya <shaily_priya@epam.com>
+Date:   Tue Mar 25 09:28:29 2025 +0000
+
+    feature1
+
+commit 602dcac9e6d42cd7614d62991c249aea039bd9de
+Author: Pankaj Sunil Ganage <pankajsunil_ganage@epam.com>
+Date:   Tue Feb 11 19:09:33 2025 +0530
+
+    task 14 generics completed
+
+commit 244551ca64a50e53fd9c742e6d989907ecf4da9b
+Author: Pankaj Sunil Ganage <pankajsunil_ganage@epam.com>
+Date:   Tue Feb 11 16:54:10 2025 +0530
+
+    Task 12 Searching and sorting complete
+
+commit fa61784e545e4eccab28779dab2467ca0e45aba1
+Author: Pankaj Sunil Ganage <pankajsunil_ganage@epam.com>
+Date:   Tue Feb 11 15:06:09 2025 +0530
+
+    Task 11 Collection Framework complete
+
+commit 868eb0b9f0953840e32597433ab4ed91784e5db3
+Author: Pankaj Sunil Ganage <pankajsunil_ganage@epam.com>
+Date:   Mon Feb 10 18:03:47 2025 +0530
+
+    Task 9 Array Challenge complete
+
+commit bb6f9cb6a749ac2c7dab148e9ee6beff3a468ed4
+Author: Pankaj Sunil Ganage <pankajsunil_ganage@epam.com>
+Date:   Mon Feb 10 17:17:03 2025 +0530
+
+    Task 8 Abstract class and Interface
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject/payroll-system (main)
+$ git push origin main
+To https://git.epam.com/shaily_priya/payroll-system.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'https://git.epam.com/shaily_priya/payroll-system.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. If you want to integrate the remote changes,
+hint: use 'git pull' before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject/payroll-system (main)
+$ git branch temp
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject/payroll-system (main)
+$ git checkout temp
+Switched to branch 'temp'
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject/payroll-system (temp)
+$ touch 1
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject/payroll-system (temp)
+$ git add .; git commit -m "1"
+[temp f268a11] 1
+ Committer: Shaily Priya <shaily_priya@epam.com>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly:
+
+    git config --global user.name "Your Name"
+    git config --global user.email you@example.com
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 1
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject/payroll-system (temp)
+$ touch 2
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject/payroll-system (temp)
+$ git add .;git commit -m "2"
+[temp d2a30f8] 2
+ Committer: Shaily Priya <shaily_priya@epam.com>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly:
+
+    git config --global user.name "Your Name"
+    git config --global user.email you@example.com
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 2
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject/payroll-system (temp)
+$ touch 3
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject/payroll-system (temp)
+$ git add .; git commit -m "3"
+[temp 73d4ad3] 3
+ Committer: Shaily Priya <shaily_priya@epam.com>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly:
+
+    git config --global user.name "Your Name"
+    git config --global user.email you@example.com
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 3
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject/payroll-system (temp)
+$ touch 4
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject/payroll-system (temp)
+$ git add .;git commit -m "4"
+[temp df999df] 4
+ Committer: Shaily Priya <shaily_priya@epam.com>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly:
+
+    git config --global user.name "Your Name"
+    git config --global user.email you@example.com
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 4
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject/payroll-system (temp)
+$ git log
+commit df999dfcaee5170398072d93749ee09b5ed01545 (HEAD -> temp)
+Author: Shaily Priya <shaily_priya@epam.com>
+Date:   Wed Mar 26 15:22:45 2025 +0530
+
+    4
+
+commit 73d4ad38a239e7744b6ee533a56cd86547970d4b
+Author: Shaily Priya <shaily_priya@epam.com>
+Date:   Wed Mar 26 15:22:21 2025 +0530
+
+    3
+
+commit d2a30f86c6b035d3a906fee64e19d518f8a8f43c
+Author: Shaily Priya <shaily_priya@epam.com>
+Date:   Wed Mar 26 15:21:56 2025 +0530
+
+    2
+
+commit f268a11219a37ae957d8a0637898dbda666b66b5
+Author: Shaily Priya <shaily_priya@epam.com>
+Date:   Wed Mar 26 15:21:37 2025 +0530
+
+    1
+
+commit 0801b0a3aed8530b95af39619fc99610291718ce (upstream/main, main)
+Merge: 602dcac b89a927
+Author: Pankaj Sunil Ganage <pankajsunil_ganage@epam.com>
+Date:   Tue Mar 25 09:28:29 2025 +0000
+
+    Merge branch 'main' into 'main'
+
+    feature1
+
+    See merge request pankajsunil_ganage/payroll-system!1
+
+commit b89a927a7fe664618120c42777063bc07345121a
+Author: Shaily Priya <shaily_priya@epam.com>
+Date:   Tue Mar 25 09:28:29 2025 +0000
+
+    feature1
+
+commit 602dcac9e6d42cd7614d62991c249aea039bd9de
+Author: Pankaj Sunil Ganage <pankajsunil_ganage@epam.com>
+Date:   Tue Feb 11 19:09:33 2025 +0530
+
+    task 14 generics completed
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject/payroll-system (temp)
+$ git rebase -i 0801b0a3aed8530b95af39619fc99610291718ce
+Successfully rebased and updated refs/heads/temp.
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject/payroll-system (temp)
+$ git log
+commit df999dfcaee5170398072d93749ee09b5ed01545 (HEAD -> temp)
+Author: Shaily Priya <shaily_priya@epam.com>
+Date:   Wed Mar 26 15:22:45 2025 +0530
+
+    4
+
+commit 73d4ad38a239e7744b6ee533a56cd86547970d4b
+Author: Shaily Priya <shaily_priya@epam.com>
+Date:   Wed Mar 26 15:22:21 2025 +0530
+
+    3
+
+commit d2a30f86c6b035d3a906fee64e19d518f8a8f43c
+Author: Shaily Priya <shaily_priya@epam.com>
+Date:   Wed Mar 26 15:21:56 2025 +0530
+
+    2
+
+commit f268a11219a37ae957d8a0637898dbda666b66b5
+Author: Shaily Priya <shaily_priya@epam.com>
+Date:   Wed Mar 26 15:21:37 2025 +0530
+
+    1
+
+commit 0801b0a3aed8530b95af39619fc99610291718ce (upstream/main, main)
+Merge: 602dcac b89a927
+Author: Pankaj Sunil Ganage <pankajsunil_ganage@epam.com>
+Date:   Tue Mar 25 09:28:29 2025 +0000
+
+    Merge branch 'main' into 'main'
+
+    feature1
+
+    See merge request pankajsunil_ganage/payroll-system!1
+
+commit b89a927a7fe664618120c42777063bc07345121a
+Author: Shaily Priya <shaily_priya@epam.com>
+Date:   Tue Mar 25 09:28:29 2025 +0000
+
+    feature1
+
+commit 602dcac9e6d42cd7614d62991c249aea039bd9de
+Author: Pankaj Sunil Ganage <pankajsunil_ganage@epam.com>
+Date:   Tue Feb 11 19:09:33 2025 +0530
+
+    task 14 generics completed
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject/payroll-system (temp)
+$ git rebase -i 0801b0a3aed8530b95af39619fc99610291718ce
+[detached HEAD 43a0c99] commits merged
+ Date: Wed Mar 26 15:21:37 2025 +0530
+ Committer: Shaily Priya <shaily_priya@epam.com>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly:
+
+    git config --global user.name "Your Name"
+    git config --global user.email you@example.com
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 4 files changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 1
+ create mode 100644 2
+ create mode 100644 3
+ create mode 100644 4
+Successfully rebased and updated refs/heads/temp.
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject/payroll-system (temp)
+$ git log
+commit 43a0c99999340e2f7d74d0c4349db5d0178263bb (HEAD -> temp)
+Author: Shaily Priya <shaily_priya@epam.com>
+Date:   Wed Mar 26 15:21:37 2025 +0530
+
+    commits merged
+
+commit 0801b0a3aed8530b95af39619fc99610291718ce (upstream/main, main)
+Merge: 602dcac b89a927
+Author: Pankaj Sunil Ganage <pankajsunil_ganage@epam.com>
+Date:   Tue Mar 25 09:28:29 2025 +0000
+
+    Merge branch 'main' into 'main'
+
+    feature1
+
+    See merge request pankajsunil_ganage/payroll-system!1
+
+commit b89a927a7fe664618120c42777063bc07345121a
+Author: Shaily Priya <shaily_priya@epam.com>
+Date:   Tue Mar 25 09:28:29 2025 +0000
+
+    feature1
+
+commit 602dcac9e6d42cd7614d62991c249aea039bd9de
+Author: Pankaj Sunil Ganage <pankajsunil_ganage@epam.com>
+Date:   Tue Feb 11 19:09:33 2025 +0530
+
+    task 14 generics completed
+
+commit 244551ca64a50e53fd9c742e6d989907ecf4da9b
+Author: Pankaj Sunil Ganage <pankajsunil_ganage@epam.com>
+Date:   Tue Feb 11 16:54:10 2025 +0530
+
+    Task 12 Searching and sorting complete
+
+commit fa61784e545e4eccab28779dab2467ca0e45aba1
+Author: Pankaj Sunil Ganage <pankajsunil_ganage@epam.com>
+Date:   Tue Feb 11 15:06:09 2025 +0530
+
+    Task 11 Collection Framework complete
+
+commit 868eb0b9f0953840e32597433ab4ed91784e5db3
+Author: Pankaj Sunil Ganage <pankajsunil_ganage@epam.com>
+Date:   Mon Feb 10 18:03:47 2025 +0530
+
+    Task 9 Array Challenge complete
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject/payroll-system (temp)
+$ git reset --hard 0801b0a3aed8530b95af39619fc99610291718ce
+HEAD is now at 0801b0a Merge branch 'main' into 'main'
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject/payroll-system (temp)
+$ git log
+commit 0801b0a3aed8530b95af39619fc99610291718ce (HEAD -> temp, upstream/main, main)
+Merge: 602dcac b89a927
+Author: Pankaj Sunil Ganage <pankajsunil_ganage@epam.com>
+Date:   Tue Mar 25 09:28:29 2025 +0000
+
+    Merge branch 'main' into 'main'
+
+    feature1
+
+    See merge request pankajsunil_ganage/payroll-system!1
+
+commit b89a927a7fe664618120c42777063bc07345121a
+Author: Shaily Priya <shaily_priya@epam.com>
+Date:   Tue Mar 25 09:28:29 2025 +0000
+
+    feature1
+
+commit 602dcac9e6d42cd7614d62991c249aea039bd9de
+Author: Pankaj Sunil Ganage <pankajsunil_ganage@epam.com>
+Date:   Tue Feb 11 19:09:33 2025 +0530
+
+    task 14 generics completed
+
+commit 244551ca64a50e53fd9c742e6d989907ecf4da9b
+Author: Pankaj Sunil Ganage <pankajsunil_ganage@epam.com>
+Date:   Tue Feb 11 16:54:10 2025 +0530
+
+    Task 12 Searching and sorting complete
+
+commit fa61784e545e4eccab28779dab2467ca0e45aba1
+Author: Pankaj Sunil Ganage <pankajsunil_ganage@epam.com>
+Date:   Tue Feb 11 15:06:09 2025 +0530
+
+    Task 11 Collection Framework complete
+
+commit 868eb0b9f0953840e32597433ab4ed91784e5db3
+Author: Pankaj Sunil Ganage <pankajsunil_ganage@epam.com>
+Date:   Mon Feb 10 18:03:47 2025 +0530
+
+    Task 9 Array Challenge complete
+
+commit bb6f9cb6a749ac2c7dab148e9ee6beff3a468ed4
+Author: Pankaj Sunil Ganage <pankajsunil_ganage@epam.com>
+Date:   Mon Feb 10 17:17:03 2025 +0530
+
+    Task 8 Abstract class and Interface
+:
+
+
+

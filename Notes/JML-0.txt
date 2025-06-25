@@ -1,0 +1,436 @@
+#########################
+=> name.trim().isEmpty() is a method invocation in Java that is used to check if a string named name contains only whitespace characters or is empty.
+
+name.trim() is a method that removes any leading and trailing whitespace characters from the original string name.
+.isEmpty() is a method that checks if the resulting string from name.trim() is empty, meaning it has a length of 0.
+If name.trim().isEmpty() returns true, it means that name was either empty to begin with, or contained only whitespace characters. If it returns false, then name contains at least one non-whitespace character.
+
+String name = "   ";
+System.out.println(name.trim().isEmpty());  // Output: true
+
+String name = "\n\t  ";
+System.out.println(name.trim().isEmpty());  // Output: true
+
+String name = "  John ";
+System.out.println(name.trim().isEmpty());  // Output: false
+
+
+############################
+=>     String salaryStr = String.valueOf(salary);   
+=>     This line converts the double salary value to a String
+
+=>     StringBuilder maskedSalary = new StringBuilder(salaryStr);    
+=>     The StringBuilder class is used to create and manipulate mutable sequences of characters, allowing for efficient modifications such as appending, inserting, or deleting characters. In this case, 'maskedSalary' initially contains the same content as the string 'salaryStr', but can be modified efficiently as needed without creating new string objects each time a change is made.
+
+=>     maskedSalary.setCharAt(i, '*');      
+=>     The setCharAt method of StringBuilder is used to replace the character at position i with an asterisk (*). 
+
+=>     return maskedSalary.toString();      
+=>     This line converts the StringBuilder back to a String and returns the masked string.
+
+=>  double threshold = 1000;
+    if (salary < threshold) {
+        return String.valueOf(salary);
+    }
+    double types do not have a toString() method like this: salary.toString();. Instead, you should use String.valueOf(salary) to convert it to a string.
+
+###################
+=> Compile your Java code using javac Filename.java.
+   Run your Java code with java Filename.
+
+
+###################
+How to create arraylist in java
+ArrayList<String> list = new ArrayList<>();
+list.add("Example");
+
+=> Arrays and ArrayLists in Java are both used to store elements, but they differ significantly in their structure, usage, and the functionalities they offer. Here are 5-6 key differences between an array and an ArrayList:
+
+1. **Size Flexibility**:
+   - **Array**: Arrays are fixed in size. Once an array is declared, its size cannot be changed. If you need more space, you would have to create a new array and copy the old elements over.
+   - **ArrayList**: An ArrayList can dynamically resize itself as elements are added or removed. It manages size adjustments automatically, providing greater flexibility in managing collections of elements.
+
+2. **Type Safety**:
+   - **Array**: Arrays are strongly typed. This means that an array declared to hold a specific type (such as `int` or `String`) can only hold elements of that type.
+   - **ArrayList**: ArrayLists are capable of holding objects of any types because they are part of Java’s Collections framework. However, with the introduction of generics from Java 5 onwards, you can specify the type of elements (e.g., `ArrayList<String>` will only allow Strings).
+
+3. **Performance**:
+   - **Array**: Generally faster and uses less memory than an ArrayList because ArrayLists internally use Arrays that need to resize occasionally, which is an overhead.
+   - **ArrayList**: Might have a slower performance and use more memory compared to arrays, especially during the dynamic resizing of the internal array.
+
+4. **Length/Size Retrieval**:
+   - **Array**: The length of the array (number of elements it can hold) is accessed via the `length` field (e.g., `arr.length`).
+   - **ArrayList**: The number of elements in the ArrayList is obtained using the `size()` method (e.g., `arrayList.size()`).
+
+5. **Primitive Types**:
+   - **Array**: Can hold both primitives (like `int`, `char`, `double`) and objects.
+   - **ArrayList**: Can only hold object elements. It cannot store primitive types directly. To store primitives, their wrapper classes (like `Integer`, `Character`, `Double`) are used.
+
+6. **Adding/Removing Elements**:
+   - **Array**: To add or remove elements, manual array management is required (such as creating a new array or shifting elements).
+   - **ArrayList**: Provides built-in methods like `add()`, `remove()`, `clear()`, and others for adding and removing elements, thus simplifying collection manipulation.
+
+These differences make ArrayLists more suitable for cases where the data set is expected to change in size, whereas arrays can be more efficient for fixed-size and high-performance scenarios.
+
+################
+class Employee {
+    private String name;
+    private int id;
+
+    @Override
+    public String toString() {
+        return "Employee{id=" + id + ", name='" + name + "'}";
+    }
+}
+
+=> The toString() method is a built-in method in Java that exists in the Object class, which is the root class from which all classes in Java inherit. This method returns a string representation of the object, which can be highly useful for debugging, logging, or simply displaying an object’s state in a human-readable form. By default, the toString() method returns a string consisting of the class name followed by an “@” sign and then the hash code of the object, which is generally not very informative about the specific attributes of the object.
+=> With this override, anytime an Employee object is involved in a print operation (like System.out.println(employee)), it will display a meaningful representation Employee{id=1, name='John'} instead of the default hash representation like Employee@1a2b3c. This makes it easy to understand object content from the output directly.
+
+=> When to use this override function? 
+=> Working with Collections: When using Java Collections Framework (such as ArrayList, HashMap, etc.), printing out the collection directly will by default print the toString() result of each element. Overriding toString() ensures the output is informative and clearly shows the contents of the collection's elements.
+
+###########################################################################################################################################################
+JAVA   VS    CPP                                                                                          
+
+Arraylist VS vector:
+
+ArrayList<String> list = new ArrayList<>();
+list.add("Hello");
+list.add("World");
+String element = list.get(1);
+int size = list.size();    
+
+std::vector<std::string> list;
+list.push_back("Hello");
+list.push_back("World");
+std::string element = list[1];
+int size = list.size();   
+
+
+HashMap VS Unordered map:
+
+Map<String, Integer> map = new HashMap<>();
+map.put("key1", 100);
+map.put("key2", 200);
+int value = map.get("key1");
+int size = map.size();
+
+std::unordered_map<std::string, int> map;
+map["key1"] = 100;
+map["key2"] = 200;
+int value = map["key1"];
+int size = map.size();
+
+
+HashSet VS Unordered set:
+
+Set<String> set = new HashSet<>();
+set.add("Apple");
+set.add("Banana");
+boolean contains = set.contains("Apple");
+int size = set.size();
+
+std::unordered_set<std::string> set;
+set.insert("Apple");
+set.insert("Banana");
+bool contains = set.find("Apple") != set.end();
+int size = set.size();
+
+
+###################################
+why overriding hashcode and equals method is imp ?
+=> In Java, the hashCode() and equals() methods play a crucial role, especially when dealing with objects in collections such as HashSet, HashMap, HashTable, and LinkedHashSet. 
+=> Ensuring that equals() and hashCode() are overridden correctly allows your objects to behave logically and predictably when stored in hash-based collections, ensuring efficient retrieval and correct behavior. This is critical for any operations involving collections that depend on hash tables for storage and lookup efficiency.
+
+##################################
+In the HashMap setup, use employee.getId() to get the id of employees instead of accessing the field directly, as it is private, so we cannot access the id of employees using "employee.id".
+
+#################################
+How are collection streams helpful?
+Utilizing collection streams to retrieve specific employee data means using these stream operations to filter and manipulate collections of employee objects based on attributes like department, name, or employment status. For example, in Java, you might use a stream to filter a list of employees to only include those who work in a specific department or are currently active, and then collect the results in a new list. This approach improves readability and often performance when dealing with large data sets.
+
+#################################
+COMPARABLE INTERFACE:
+The Comparable interface is part of the Java Collections Framework and it imposes a natural ordering on the objects of each class that implements it. This interface requires the implementing class to provide an implementation for the method compareTo(T o).
+
+The statement class Employee implements Comparable<Employee> in Java defines a class named Employee that implements the Comparable interface.
+
+The compareTo(Employee other) method in the Employee class is used for ordering instances of Employee, typically based on a member variable (like employee ID, name, or anything else defining a natural order). This method must return:
+
+=> a negative integer if this object is less than the specified object,
+=> zero if this object is equal to the specified object, and
+=> a positive integer if this object is greater than the specified one.
+
+IMPLEMENTATION:
+public class Employee implements Comparable<Employee> {
+    private int employeeId;
+    private String name;
+    private String department;
+
+    // Implementation of compareTo method
+    @Override
+    public int compareTo(Employee other) {
+        // This will sort employees by their ID in ascending order
+        return Integer.compare(this.employeeId, other.employeeId);
+    }
+
+    // Main method for testing
+    public static void main(String[] args) {
+        Employee emp1 = new Employee(101, "Alice", "HR");
+        Employee emp2 = new Employee(102, "Bob", "IT");
+        Employee emp3 = new Employee(100, "Charlie", "Marketing");
+
+        List<Employee> employees = new ArrayList<>();
+        employees.add(emp1);
+        employees.add(emp2);
+        employees.add(emp3);
+
+        Collections.sort(employees);
+        
+        for (Employee emp : employees) {
+            System.out.println(emp);
+        }
+    }
+}
+
+EXECUTION:
+Collections.sort(employees) is called which triggers the sorting mechanism on the list of employees.
+Sorting uses the compareTo method (from the Comparable interface implementation) to determine the order:
+It first compares emp1 with emp2: Integer.compare(101, 102) returns -1, so emp1 is ordered before emp2.
+It then compares emp1 with emp3: Integer.compare(101, 100) returns 1, so emp1 is ordered after emp3.
+Finally, it compares emp2 with emp3: Integer.compare(102, 100) returns 1, so emp2 is ordered after emp3.
+The list becomes -> [emp3, emp1, emp2] after sorting since we're sorting by employeeId in ascending order and emp3 has the smallest ID.
+
+=> Integer.compare(int x, int y) is a static method in the Integer class of the Java standard library. It compares two int values, x and y:
+
+It returns a negative integer if x is numerically less than y.
+It returns zero if x is equal to y.
+It returns a positive integer if x is numerically greater than y.
+
+#############################################
+In Java, Comparator and Comparable are two interfaces used for comparing and sorting objects.
+
+Comparable: This interface is used when you want to define the natural ordering for objects of a class. It has a single method, compareTo(), that compares the current object with another object of the same type. Classes that implement Comparable can be used with sorting methods like Collections.sort() and Arrays.sort().
+
+Comparator: This interface is used when you want to define an alternative ordering for objects of a class, or when you don't have access to modify the class whose objects you need to compare. It has a single method, compare(), that compares two objects of the same type. You can use Comparator with sorting methods by passing it as an argument, allowing for more flexible sorting based on different criteria.
+
+################################################
+e1.getName().compareToIgnoreCase(e2.getName())
+=> The expression e1.getName().compareToIgnoreCase(e2.getName()) compares the names of two objects, e1 and e2, by calling the getName() method on each object to retrieve their respective names as strings. The comparison is done using the compareToIgnoreCase() method, which is a method of the String class in Java.
+
+################################################
+How to use streams in java?
+public static List<Employee> searchByDepartment(List<Employee> employees, String department) {
+        return employees.stream()
+                .filter(e -> e.getDepartment().equalsIgnoreCase(department))
+                .collect(Collectors.toList());
+    }
+=> The provided method, searchByDepartment, is a utility method designed to filter and return a list of Employee objects whose department matches a specified department name.
+
+=> employees.stream() — Converts the list of employees into a Stream. In Java, a Stream is a sequence of elements supporting sequential and parallel aggregate operations.
+
+=> Filter Operation:  .filter(e -> e.getDepartment().equalsIgnoreCase(department)) — Filters the stream to include only those employee objects whose department field matches the provided department string. The comparison is case-insensitive.
+=> e is each element in the stream (each employee in this case).
+=> e.getDepartment().equalsIgnoreCase(department) checks whether the department of each employee matches the specified department, ignoring any differences in letter case.
+=> Collecting Results:  .collect(Collectors.toList()) — This part of the stream pipeline collects the elements from the filtered stream back into a new list. Collectors.toList() is a collector that accumulates the elements into a new List.
+
+*************finding maximum in streams: employees.stream().max(Comparator.comparingDouble(Employee::getSalary))
+                                         .orElse(null);
+=> Max Operation:
+
+.max(Comparator.comparingDouble(Employee::getSalary)) — Searches for the maximum element in this stream according to the natural order of salaries. It uses the Comparator.comparingDouble method, which accepts a method reference (Employee::getSalary) to extract the double-valued salary from each Employee. This comparator tells the max() method how to compare the elements (employees) in the stream based on their salaries.
+Employee::getSalary is a method reference that passes each employee's salary to the comparator.
+Or Else:
+
+.orElse(null) — The max() method returns an Optional<Employee>. This is because the operation on an empty stream would not be able to return a value since no maximum can be determined if there are no elements.
+orElse(null) is used to return null in the event that the list of employees is empty, and hence no maximum can be found. If the list is not empty, it returns the employee with the highest salary.
+
+##########################################
+=> employees.forEach(System.out::println);
+=> The line employees.forEach(System.out::println); is a concise way to iterate over each element in the employees list and perform an action. In this case,       the action is to print each element. 
+
+###########################################
+We have two classes, one is public class task12 and one is EmployeeManager, now searchById is a method in EmployeeManager class, so how to access that from task12 class which has main  method?
+In the code you have provided, searchById is a method from the EmployeeManager class but it seems inadvertently called as if it were part of the task12 class. Java does not allow calling non-static methods from a static context unless they belong to the same class. Moreover, searchById is defined as a static method of EmployeeManager, so it should be accessed via its class name.
+
+When calling a static method from another class, you should use the class name to reference it.Here is how you should properly call searchById in your main method:
+Employee result = EmployeeManager.searchById(employees, searchId);
+Instead of :
+Employee result = searchById(employees, searchId);
+
+##########################################
+How to create custom exceptions in java?
+class PayrollComputationException extends Exception {
+    public PayrollComputationException(String message, Throwable cause) {
+        super(message, cause);
+    }
+}
+=> By extending Exception and using its constructor to pass both a message and a cause, PayrollComputationException ensures that when an error occurs during payroll computations, detailed information about the cause is preserved and propagated.
+
+##########################################
+Logging framework in java
+
+A logging framework in Java is a set of libraries or APIs that allow developers to log messages within their code. These messages can provide information about the application's runtime behavior, track errors, and debug issues. Java's standard logging framework is called "Java Logging API" (java.util.logging package) and it provides a way to log messages with different levels of severity (INFO, WARNING, SEVERE, etc.)
+Logging messages within the code refers to the practice of inserting statements in the source code that record information about the program's execution. 
+
+private static final Logger LOGGER = Logger.getLogger(PayrollProcessor.class.getName());
+=> The getName() method returns a String representing the fully qualified name of the class. The fully qualified name includes the package name followed by the class name.
+
+For example, if the PayrollProcessor class is defined within a package named com.example.payroll, then,PayrollProcessor.class.getName() will return the string: "com.example.payroll.PayrollProcessor", This string is used as the name of the Logger instance. The fully qualified class name helps identify the source of log messages, making it easier to trace where specific log entries are coming from, especially when multiple classes across different packages are involved in a larger application. 
+                                                          
+**********************We can't use list directly because it is an interface, so we need some kind of data structure to implement that, List<String> list = new ArrayList<>();
+
+#########################################
+Generics:     Generics in Java are a language feature that allows for type parameters to be used to express dependencies among the types of one or more classes, interfaces, or methods.Generics make errors easier to detect at compile time, improving type safety by allowing more errors to be caught during compilation rather than at runtime.
+It provides type safety and also at the same time hum generic variable me kuch bhi rakh sakte h, whatever we want
+=> Creating generic class: public class Box<T>
+                           {     T container;      }
+                       In other files, wherever we want to use this we can specify the type of container
+                       Box<String> y = new Box<String>(container);
+=> An example of Generic class:
+public class Box<T> {
+    private T t;  // T stands for "Type"
+    
+    public void set(T t) {
+        this.t = t;
+    }
+    
+    public T get() {
+        return t;
+    }
+    
+    public static void main(String[] args) {
+        Box<Integer> integerBox = new Box<Integer>();
+        Box<String> stringBox = new Box<String>();
+        
+        integerBox.set(10);
+        stringBox.set("Hello World");
+
+        System.out.println("Integer Value: " + integerBox.get());
+        System.out.println("String Value: " + stringBox.get());
+    }
+}
+
+=> Another example of generic class: 
+Generic Type Declaration: <T> before the return type void declares that this method will use a type parameter T. This means that T can be any type, and the specific type will be determined based on the objects passed to the method when it is called.
+
+Parameter Type: The method takes one parameter, data, which is of type Collection<T>. This means the method can accept a collection of any type of objects (e.g., Collection<Integer>, Collection<String>, Collection<Employee>, etc.).
+
+Loop Over Elements: Inside the method, it iterates over Collection<T> and prints each item. Since System.out.println() is used, it implicitly calls the toString() method of each object, which means any object type T that provides a toString() implementation can be printed correctly.
+
+public static <T> void printPayrollData(Collection<T> data) {
+    for (T item : data) {
+        System.out.println(item);
+    }
+}
+
+=> Another example of generic class:
+Bounded Type Parameter: <T extends Number> indicates that T must be a subtype of Number. This is known as a bounded type parameter. It restricts the kinds of types that can be passed to T. In this case, only classes that extend from Number (like Integer, Double, Float, etc.) are acceptable.
+
+Calculation Using Generics: Inside the method, salary.doubleValue() is used to convert the Number object to a double (because all Number subclasses in Java implement the method doubleValue()), which ensures that arithmetic operations can be performed regardless of the specific boxed numeric type (Integer, Double, etc.) passed to the method.
+
+Return Value: The method calculates the bonus by multiplying the salary by the bonus percentage (divided by 100 to convert from a percentage to a decimal) and returns the computed bonus as a double.
+
+public static <T extends Number> double calculateBonus(T salary, double bonusPercentage) {
+    return salary.doubleValue() * (bonusPercentage / 100);
+}
+
+=> Complete implementation of generic methods:
+import java.util.*;
+ 
+// Generic Payroll Data Handler
+class PayrollDataHandler {
+    // Generic method to process and print any type of payroll data
+    public static <T> void printPayrollData(Collection<T> data) {
+        for (T item : data) {
+            System.out.println(item);
+        }
+    }
+
+    // The expression <T extends Number> in the method signature is not a return type but rather a type parameter with a bound. 
+ 
+    // Generic method to calculate bonuses based on different employee types
+    public static <T extends Number> double calculateBonus(T salary, double bonusPercentage) {
+        return salary.doubleValue() * (bonusPercentage / 100);
+    }
+}
+ 
+// Employee Class
+class Employee {
+    private String id;
+    private String name;
+    private double salary;
+ 
+    public Employee(String id, String name, double salary) {
+this.id = id;
+this.name = name;
+        this.salary = salary;
+    }
+ 
+    public double getSalary() {
+        return salary;
+    }
+ 
+    @Override
+    public String toString() {
+        return "Employee[ID=" + id + ", Name=" + name + ", Salary=" + salary + "]";
+    }
+}
+ 
+// Payroll System Demo
+public class PayrollSystem {
+    public static void main(String[] args) {
+        // List of employees
+        List<Employee> employees = new ArrayList<>();
+        employees.add(new Employee("E101", "Alice", 50000));
+        employees.add(new Employee("E102", "Bob", 60000));
+ 
+        // Printing Employee Payroll Data using Generics
+        System.out.println("Payroll Data:");
+        PayrollDataHandler.printPayrollData(employees);
+
+        // call krne ke baad ye print hoga:
+        Payroll Data:
+        Employee[ID=E101, Name=Alice, Salary=50000.0]
+        Employee[ID=E102, Name=Bob, Salary=60000.0]
+ 
+        // Set of payment details (Demonstrating flexibility)
+        // initializes a Set of type Double and populates it with specific values(no specific order, unordered set ka concept laga h)
+        Set<Double> payments = new HashSet<>(Arrays.asList(50000.0,     60000.0, 45000.0));
+        System.out.println("\nPayment Details:");
+        PayrollDataHandler.printPayrollData(payments);
+
+        // call krne ke baad ye print hoga : 
+        Payment Details:
+        60000.0
+        50000.0
+        45000.0
+ 
+        // Calculating Bonus for Employees
+        System.out.println("\nBonus Calculations:");
+        for (Employee emp : employees) {
+            double bonus = PayrollDataHandler.calculateBonus(emp.getSalary(), 10);
+            System.out.println(emp + " -> Bonus: " + bonus);
+
+        // call krne ke baad ye print hoga 
+        Employee[ID=E101, Name=Alice, Salary=50000.0] -> Bonus: 5000.0
+        Employee[ID=E102, Name=Bob, Salary=60000.0] -> Bonus: 6000.0
+        }
+    }
+}
+
+=> Syntax of generic methods : 
+   public class Utility {
+
+    // A simple generic method example
+    public static <T> void printArray(T[] array) {
+        for (T element : array) {
+            System.out.println(element);
+        }
+    }
+}
+
+
+
+
+                                    

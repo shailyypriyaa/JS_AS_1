@@ -1,0 +1,454 @@
+##############################################
+Interface in java:
+In Java, an interface is a reference type, similar to a class, that can contain only constants, method signatures, nested types, and default methods. Here are the steps to create an interface in Java:
+
+Start with the interface keyword: Use the interface keyword to define a new interface.
+Name the interface: Give your interface a name that follows Java naming conventions (capital first letter, CamelCase for additional words).
+Add method signatures: Within the interface body, write method signatures without providing implementations. These methods are by default abstract and public.
+Optionally, add constants and default methods: You can define constants inside the interface (public static final variables), or provide default method implementations using the default keyword.
+
+Here is an example of how to create a simple interface in Java:
+
+interface Vehicle {
+    // Constant
+    int MAX_SPEED = 120;  // public static final is assumed
+
+    // Abstract method
+    void accelerate(int increment);
+
+    // Default method
+    default void brake() {
+        System.out.println("Vehicle is braking");
+    }
+}
+
+###############################################
+Functional Interface:
+How is functional interface different from interface?
+A functional interface in Java is a special type of interface that contains exactly one abstract method. These interfaces are used as the basis for lambda expressions in Java, which were introduced in Java 8 to provide a clear and concise way to represent one method interface using an expression. Functional interfaces are often annotated with @FunctionalInterface annotation to indicate the compiler that the interface is intended to be a functional interface and to ensure that it contains only one abstract method.
+
+Here's a comparison between a regular interface and a functional interface:
+
+Interface
+An interface in Java can have zero or more abstract methods.
+Interfaces are allowed to have default methods with implementations.
+Interfaces can have static methods with implementations.
+Interfaces support the declaration of nested types (classes, interfaces, enums).
+There is no restriction on the number of methods (abstract, default, or static) it can contain.
+
+Example:
+interface Vehicle {
+    void start();
+    void stop();
+    default void turn(String direction) {
+        System.out.println("Turning " + direction);
+    }
+    static void signal() {
+        System.out.println("Signal turned on");
+    }
+}
+
+Functional Interface
+A functional interface has exactly one abstract method.
+Like regular interfaces, functional interfaces can also have default methods and static methods.
+While functional interfaces can have more than one method, only one of these can be abstract.
+A functional interface is generally annotated with @FunctionalInterface, though it's optional. The annotation helps to provide a clearer intent and compile-time checking.
+Useful in lambda expressions and method references.
+
+Example:
+@FunctionalInterface
+interface Movable {
+    void move(int distance); // Exactly one abstract method
+
+    default void stop() {
+        System.out.println("Stopped moving");
+    }
+
+    static void rest() {
+        System.out.println("At rest");
+    }
+}
+
+=> In Java, when defining an interface, all methods without a body are implicitly abstract. Therefore, it's not necessary to explicitly use the abstract keyword. The members of an interface are public and abstract by default.
+
+############################################
+Lambda Expressions:
+A lambda expression in Java is a short block of code which takes in parameters and returns a value. Lambda expressions are similar to methods, but they do not need a name and they can be implemented right in the body of a method.
+
+Syntax
+The basic syntax of a lambda expression is:
+
+(parameter1, parameter2, ..., parameterN) -> expression
+or
+(parameter1, parameter2, ..., parameterN) -> { statements; }
+
+The parameters on the left side of the arrow operator -> are similar to parameters of a method. They can be explicitly declared with types or can have their types inferred.
+The body of the lambda can be a single expression or a code block enclosed in curly braces.
+Functional Interfaces : Lambda expressions are typically used to implement the abstract method defined in a functional interface. A functional interface, recall, is an interface that contains exactly one abstract method (excluding methods of the Object class). The signature of the lambda expression must match the signature of the abstract method in the functional interface.
+
+Here is a simple example of using a lambda expression with a functional interface in Java.
+First, let's define a functional interface named Calculator which has one abstract method calculate to perform arithmetic operations.
+
+@FunctionalInterface
+interface Calculator {
+    int calculate(int a, int b);
+}
+Now, let's implement this interface using a lambda expression in the main method to perform addition:
+
+public class Main {
+    public static void main(String[] args) {
+        // Lambda expression that implements Calculator interface
+        Calculator add = (a, b) -> a + b;
+
+        // Use the lambda expression to perform addition
+        int result = add.calculate(5, 3);
+        System.out.println("Result of addition: " + result);
+    }
+}
+In this example : We define a functional interface Calculator with an abstract method calculate.
+In the main method, a lambda expression (a, b) -> a + b is used to provide an implementation for the calculate method, which performs addition.
+The lambda expression is assigned to a variable of type Calculator named add.
+We then invoke the calculate method on the add object with arguments 5 and 3, and it returns the sum 8.
+This is a simple implementation of using a lambda expression with a functional interface in Java.
+
+######################################
+We need to create object of CompensationCalculator class, even if we have to call a method(non-static), which is in same class, why ?
+The reason you need to create an object of CompensationCalculator to call the computeTotalCompensation method is that the method is an instance method and not a static method. Instance methods require an object because they operate on the instance variables (state) of an object and thereby belong to an instance of a class.
+
+######################################
+Same function names for different functional interfaces => In Java, it is permissible for different interfaces to include methods that share the same name and parameters. These are known as functional interfaces, and they focus on providing a specific functionality independently of each other.
+In Java, methods from different interfaces having the same name and parameters do not lead to issues because Java supports multiple inheritance of interfaces. When a class implements multiple interfaces that contain methods with the same signature, the class only needs to provide a single implementation for those methods.
+
+This feature allows classes to inherit behavior from various sources without conflicts in method signatures. Interfaces in Java simply declare methods; they do not provide implementations. Therefore, it's the responsibility of the implementing class to provide the concrete implementation.
+
+interface InterfaceA {
+    public void doSomething();
+}
+
+interface InterfaceB {
+    public void doSomething();
+}
+
+public class MyClass implements InterfaceA, InterfaceB {
+    public void doSomething() {
+        System.out.println("Doing something...");
+    }
+
+    public static void main(String[] args) {
+        MyClass myObj = new MyClass();
+        myObj.doSomething();
+    }
+}
+
+######################################
+sc and bc do not store any numerical values at this point.
+They store function definitions (lambda expressions), meaning they can be executed when needed.
+When sc.calculate(baseSalary) is called, it executes base -> base and returns baseSalary (which is 50000).
+When bc.calculate(salary, bonus) is called, it executes (salary, bonus) -> salary + bonus, returning 50000 + 5000 = 55000.
+
+######################################
+Built-in functional interfaces in java:
+Java provides several built-in functional interfaces in the java.util.function package, which are designed to provide target types for lambda expressions and method references. Some of the most commonly used built-in functional interfaces include:
+
+Function<T,R>: Accepts an argument of type T and produces a result of type R. Use this when you need to transform a value.
+Consumer<T>: Accepts an argument of type T and returns no result (represents a side-effect).
+Supplier<T>: Produces a result of type T. It takes no input.
+Predicate<T>: Accepts an argument of type T and returns a boolean value. It is commonly used for filtering or matching.
+
+Predicate
+The Predicate<T> functional interface is a significant tool for working with boolean expressions, often used in filtering scenarios or conditional checks. Here's how you can use a Predicate: The Predicate<T> interface defines an abstract method named test that takes an argument of type T and returns a boolean.
+
+public class PredicateExample {
+    public static void main(String[] args) {
+        List<String> items = new ArrayList<>();
+        items.add("Apple");
+        items.add("Banana");
+        items.add("Pear");
+        items.add("Mango");
+        items.add("Orange");
+
+        Predicate<String> startsWithA = s -> s.startsWith("A");
+// This line of Java code defines a Predicate of type String.
+Predicate<String>: This specifies that we are using the Predicate interface, and it will operate on objects of type String. Predicate evaluates a function that takes a single argument and returns a boolean, startsWithA: This is the name of the variable in which the predicate is stored, s: This is the parameter to the lambda expression, ->: This is the lambda operator which is read as "goes to", s.startsWith("A"): This is the body of the lambda expression. It invokes the startsWith method on the String object s, checking whether it begins with the letter "A". The startsWith method returns a boolean result, true if s starts with "A" and false otherwise.
+
+        items.stream()
+             .filter(startsWithA)
+             .forEach(System.out::println); // This will print "Apple"
+// This line of code demonstrates how to use Java Stream API to process collections in a functional style.
+items: This is a collection of objects, .stream(): This method converts the collection items into a stream, .filter(startsWithA): This is an intermediate operation of the stream that filters elements based on a given predicate. In this case, startsWithA is a Predicate<String>. The filter method uses this predicate to test each element in the stream. Only elements that pass the test (i.e., strings that start with "A") will be included in the new stream created by filter().
+
+        // Alternatively, using Predicate directly
+        for(String item : items) {
+            if(startsWithA.test(item)) {
+                System.out.println(item);  // This will also print "Apple"
+            }
+        }
+    }
+}
+
+=> Two lines of code in task4:
+Predicate<Employee> salaryFilter = employee -> employee.getSalary() > threshold;: This line defines a Predicate for employees that evaluates to true if an employee's salary is greater than a specified threshold. This predicate is stored in the variable salaryFilter.
+
+List<Employee> filteredEmployees = employees.stream().filter(salaryFilter).collect(Collectors.toList());: This line processes the employees list:
+
+.stream(): Converts the employees list into a stream.
+.filter(salaryFilter): Applies the salaryFilter predicate to each element (employee) in the stream. Only employees whose salaries are greater than the threshold are passed through.
+.collect(Collectors.toList()): This is a terminal operation that gathers the elements of the stream into a new List. The Collectors.toList() method provides a collector that accumulates the input elements into a new list.
+The result is a new list, filteredEmployees, which contains only those employees from the original list whose salaries exceed the specified threshold.
+
+=> One more confusion: Predicate<Employee> salaryFilter = employee -> employee.getSalary() > threshold;
+employee is used instead of employees because it represents a single instance of an Employee object at a time during the operation of filtering. The Predicate<Employee> takes a single Employee object as an input and applies the specified condition (employee.getSalary() > threshold) to each individual Employee object in the collection when used with methods like filter() from the Streams API.
+
+employees is the name of the entire collection (a List<Employee> in this case). It represents all employee objects collectively.
+employee (within the lambda expression) is the parameter name chosen to represent an individual Employee object when the Predicate function is invoked. For each element in the employees collection, the lambda expression (employee -> employee.getSalary() > threshold) is executed once. Each time, employee refers to the current Employee object being processed.
+The choice of employee as the parameter name in the lambda expression is arbitrary and could be any valid identifier. For example, the expression could also be written as:
+Predicate<Employee> salaryFilter = e -> e.getSalary() > threshold;
+In this case, e is used instead of employee, but it functions in the exact same way. The key is that it represents a single instance of Employee during the evaluation of the predicate for each element in the stream. The naming should ideally make the code readable and indicate that a single Employee is being handled by the predicate at any one time.
+
+#########################################
+Collections.sort() in java : 
+The Collections.sort() method in Java is used to sort elements in a list according to their natural ordering or by a custom comparator.
+
+Using Natural Ordering : If the elements in the list implement the Comparable interface, you can sort the list using their natural order by directly calling Collections.sort() with the list.(You can look at the API documentation or the source code of the class to see if it implements the Comparable interface. For built-in classes like String, Integer, etc., they do implement Comparable.
+
+public class Main {
+    public static void main(String[] args) {
+        List<String> list = new ArrayList<>();
+        list.add("Banana");
+        list.add("Apple");
+        list.add("Mango");
+        list.add("Cherry");
+
+        System.out.println("Before sorting: " + list);
+
+        Collections.sort(list);
+
+        System.out.println("After sorting: " + list);
+    }
+}
+Before sorting: [Banana, Apple, Mango, Cherry]
+After sorting: [Apple, Banana, Cherry, Mango]
+
+Using a Custom Comparator : If the elements do not have a natural ordering or you want to sort them using a different criteria, you can use a comparator
+
+public class Main {
+    public static void main(String[] args) {
+        List<Integer> list = new ArrayList<>();
+        list.add(15);
+        list.add(5);
+        list.add(20);
+        list.add(10);
+
+        System.out.println("Before sorting: " + list);
+
+        // Sorting with a custom comparator
+        Collections.sort(list, new Comparator<Integer>() {
+            @Override
+            public int compare(Integer o1, Integer o2) {
+                return o1.compareTo(o2);  // Sort in ascending order
+            }
+        });
+
+        System.out.println("After sorting: " + list);
+    }
+}
+Before sorting: [15, 5, 20, 10]
+After sorting: [5, 10, 15, 20]
+
+You can also use lambda expressions in Java 8 and above to make the comparator code more concise : Collections.sort(list, (o1, o2) -> o1.compareTo(o2));
+
+
+#############################################
+Stream in Java: In Java, streams are a feature introduced in Java 8 that allows for functional-style operations on sequences of elements. A stream is essentially an abstraction that represents a sequence of objects supporting various methods which can be pipelined to produce the desired result without modifying the underlying data source.
+Streams provide a very efficient way to handle large amounts of data, especially with their ability to facilitate easy parallel execution without the need for synchronization as in traditional multithreading approaches.
+Streams can be created from various data sources, especially collections (like lists, sets) using the stream() method. They can also be created from arrays, lines of a file, or certain primitive data types.
+
+Some key features and functionalities of streams include:
+Lazy execution: Stream operations are not performed until needed.
+Common operations: Such as map, filter, reduce, collect, sort, etc., which allow for comprehensive data manipulation.
+Parallel execution support: Streams can be parallelized using parallelStream() instead of stream() to leverage multi-threading in a simple way.
+
+Map function of streams : The .map() function in Java is a method used with streams that applies a given function to each element of the stream and transforms each element into a new form. The function provided as an argument to .map() is called a mapping function and is intended to convert or transform each input element to an output element.
+
+##########################################
+Method references in stream : 
+Employee::getName is an example of a method reference in Java. Method references are a shorthand notation of a lambda expression that calls a particular method. In this context, Employee::getName is a reference to the getName method of the Employee class.
+
+Here's how it functions in the context of the Stream API: Method Reference: Employee::getName is effectively shorthand for the lambda expression (Employee e) -> e.getName(). It tells Java to invoke the getName method on each instance of Employee being processed in the stream.
+Method references are used primarily to improve code readability and conciseness. They are particularly useful when you're just calling existing methods directly on objects or classes.
+
+Example usage : List<String> names = employees.stream()
+                              .map(Employee::getName)
+                              .collect(Collectors.toList());
+
+In the map function, instead of passing a lambda expression like (Employee e) -> e.getName(), we use the method reference Employee::getName. This indicates that for each Employee object in the stream, the getName() method should be called, and the result (which is the employee's name) is collected and used in further stream processing (in this case, collected into a list).
+
+#########################################
+reduce() in stream : int result = numbers.stream().reduce(0, Integer::sum);
+The expression Integer::sum is a method reference in Java that points to the sum method of the Integer class. This method takes two integers as arguments and returns their sum. In the context of the method reference, Integer::sum provides a way to refer to this method without calling it directly.
+
+Reduction stream operations allow us to produce one single result from a sequence of elements, by repeatedly applying a combining operation to the elements in the sequence.
+Identity – an element that is the initial value of the reduction operation and the default result if the stream is empty
+Accumulator – a function that takes two parameters: a partial result of the reduction operation and the next element of the stream
+Combiner – a function used to combine the partial result of the reduction operation when the reduction is parallelized or when there’s a mismatch between the types of the accumulator arguments and the types of the accumulator implementation.
+
+List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6);
+int result = numbers
+  .stream()
+  .reduce(0, (subtotal, element) -> subtotal + element);
+assertThat(result).isEqualTo(21);
+
+In this case, the Integer value 0 is the identity. It stores the initial value of the reduction operation and also the default result when the stream of Integer values is empty.
+Likewise, the lambda expression:
+subtotal, element -> subtotal + element : is the accumulator since it takes the partial sum of Integer values and the next element in the stream.
+
+To make the code even more concise, we can use a method reference instead of a lambda expression:
+int result = numbers.stream().reduce(0, Integer::sum);
+assertThat(result).isEqualTo(21);
+
+Of course, we can use a reduce() operation on streams holding other types of elements.
+
+=> code line of task14 : Collectors.groupingBy(Employee::getDepartment)
+Collectors.groupingBy(Employee::getDepartment): This is a collector that performs a "group by" operation. It groups the data based on the department. Employee::getDepartment is a method reference (a succinct way for a lambda expression (Employee e) -> e.getDepartment()) and it instructs how to extract the department from each employee.
+The result is a Map<String, List<Employee>> where each key (String) is a department name, and the value (List<Employee>) is a list of all Employees who belong to that department.The resulting map will look like this :
+{
+  "Marketing": [John Doe, Jane Smith],
+  "IT": [Alice Johnson, Bob Brown],
+  "HR": [Charlie Davis]
+}
+
+#####################################
+sorted() in streams : .sorted((s1, s2) -> Double.compare(s1, s2))  // Ascending order
+Since Double.compare(s1, s2) returns:
+A negative value if s1 < s2 (keeps order)
+A positive value if s1 > s2 (swaps order)
+Zero if they are equal (no change)
+
+.sorted((s1, s2) -> Double.compare(s2, s1))   // Descending order
+.sorted(...) – This is a sorting operation on a Java Stream.
+(s1, s2) -> Double.compare(s2, s1) – This is a custom comparator that sorts elements in descending order.
+Double.compare(s2, s1):
+If s2 > s1, it returns a positive value (indicating s2 should come before s1).
+If s2 < s1, it returns a negative value (indicating s1 should come before s2).
+If both are equal, it returns 0 (no change in order).
+
+######################################
+Arrays.asList() and List.of() in java: 
+List.of() is a method in the Java programming language that was introduced in Java 9. It is a static factory method used to create an immutable list containing a specified set of elements. In the given example, List.of() is used to create an immutable list of Employee objects, with each Employee being initialized with a name and salary. Immutable lists mean that once the list is created, it cannot be modified – no elements can be added, removed, or replaced.
+Arrays.asList() and List.of() are both used to create lists in Java, but there are some key differences between the two:
+
+Mutability:
+Arrays.asList() returns a fixed-size list backed by the original array. This means that you can modify the elements of the list (e.g., replace one element with another), but you cannot add or remove elements from the list.
+List.of() returns an immutable list. Once created, you cannot add, remove, or modify elements in the list. Attempts to do so will throw an UnsupportedOperationException.
+
+Null Handling:
+Arrays.asList() allows null elements. You can have null values in the list.
+List.of() does not allow null elements. Passing a null to List.of() will result in a NullPointerException.
+
+######################################
+Sealed classes: In Java, we have the concept of abstract classes. It is mandatory to inherit from these classes since objects of these classes cannot be instantiated. On the other hand, there is a concept of a final class in Java, which cannot be inherited or extended by any other class. What if we want to restrict the number of classes that can inherit from a particular class? The answer is sealed class. So, a sealed class is a technique that limits the number of classes that can inherit the given class. This means that only the classes designated by the programmer can inherit from that particular class, thereby restricting access to it. when a class is declared sealed, the programmer must specify the list of classes that can inherit it. The concept of sealed classes in Java was introduced in Java 15.
+
+Steps to Create a Sealed Class
+Define the class that you want to make a seal.
+Add the “sealed” keyword to the class and specify which classes are permitted to inherit it by using the “permits” keyword.
+Example
+sealed class Human permits Manish, Vartika, Anjali
+{   
+   public void printName()
+   {
+       System.out.println("Default");
+   }
+}
+non-sealed class Manish extends Human
+{
+   public void printName()
+   {
+       System.out.println("Manish Sharma");
+   }
+}
+sealed class Vartika extends Human
+{
+   public void printName()
+   {
+       System.out.println("Vartika Dadheech");
+   }
+}
+final class Anjali extends Human
+{
+   public void printName()
+   {
+       System.out.println("Anjali Sharma");
+   }
+}
+Explanation of the above Example:
+Human is the parent class of Manish, Vartika, and Anjali. It is a sealed class so; other classes cannot inherit it.
+Manish, Vartika, and Anjali are child classes of the Human class, and it is necessary to make them either sealed, non-sealed, or final. Child classes of a sealed class must be sealed, non-sealed, or final.
+If any class other than Manish, Vartika, and Anjali tries to inherit from the Human class, it will cause a compiler error.
+
+######################################
+Records in java : 
+Java introduced the feature of records in Java 14 as a way to provide a compact and efficient representation of simple data carriers. A record essentially models data as data and automatically provides implementations for common methods such as equals(), hashCode(), toString(), and accessor methods for all its fields. This simplifies the process of creating simple and immutable data-driven classes such as representing an employee.
+
+To create an EmployeeRecord using Java records, you will follow these steps:
+Define the Record: You simply define a record with the desired fields. In this case, fields for name and salary as mentioned in your instructions.
+
+public record EmployeeRecord(String name, double salary) {
+}
+Explanation:
+Record Declaration: public record EmployeeRecord declares a new record type.
+Components: Inside the parentheses, String name and double salary are the components of the record. Each component represents a final field of the record.
+Accessors: By default, a record generates a public method for each component with the same name as the component, which acts as a getter. For EmployeeRecord, these would be name() and salary().
+Usage Example:
+To demonstrate the use of this record, let me include a simple main method within a class that creates and manipulates an instance of EmployeeRecord.
+public class Main {
+    public static void main(String[] args) {
+        // Creating an instance of EmployeeRecord
+        EmployeeRecord employee = new EmployeeRecord("Alice Johnson", 50000);
+
+        // Accessing the record fields
+        System.out.println("Employee Name: " + employee.name());
+        System.out.println("Employee Salary: $" + employee.salary());
+
+        // Outputting the EmployeeRecord object
+        System.out.println("Employee Record: " + employee);
+    }
+}
+Output:
+When you run the main method, the output gives you:
+Employee Name: Alice Johnson
+Employee Salary: $50000
+Employee Record: EmployeeRecord[name=Alice Johnson, salary=50000.0]
+The toString() method is automatically provided and gives a nicely formatted representation of the record.
+
+Defining a Record
+A record automatically provides implementations for equals(), hashCode(), and toString() methods, as well as a compact constructor. Here's an example:
+public record Person(String name, int age) {}
+Using a Record
+You can create instances of the Person record and use its methods like this:
+public class Main {
+    public static void main(String[] args) {
+        Person person = new Person("Alice", 30);
+        System.out.println(person.name()); // Output: Alice
+        System.out.println(person.age());  // Output: 30
+        System.out.println(person);        // Output: Person[name=Alice, age=30]
+    }
+}
+Benefits of Using Records
+Conciseness: Records reduce boilerplate code by automatically generating common methods.
+Immutability: Fields in a record are final and cannot be changed after the object is created.
+Readability: Records make the code more readable and maintainable.
+Customizing Records
+You can also add custom methods or override the default implementations if needed:
+public record Person(String name, int age) {
+    public Person {
+        if (age < 0) {
+            throw new IllegalArgumentException("Age cannot be negative");
+        }
+    }
+    public String greet() {
+        return "Hello, my name is " + name;
+    }
+}
+In this example, a custom constructor checks for a valid age, and a new method greet() is added.
+Records are a powerful feature for creating simple, immutable data carriers in Java, making your code cleaner and more efficient.
+

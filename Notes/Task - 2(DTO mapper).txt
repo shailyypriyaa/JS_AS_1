@@ -1,0 +1,224 @@
+Task - 2(DTO mapper)
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+ 
+import java.util.Optional;
+ 
+@RestController
+@RequestMapping("/api/employees")
+public class EmployeeController {
+ 
+    @Autowired
+    private EmployeeService employeeService;
+ 
+    // Create a new employee (Accept DTO)
+    @PostMapping
+    public ResponseEntity<EmployeeDTO> createEmployee(@RequestBody EmployeeDTO employeeDTO) {
+        // Convert DTO to Entity
+        Employee employee = EmployeeMapper.toEmployeeEntity(employeeDTO);
+        // Save employee and map back to DTO
+        Employee savedEmployee = employeeService.saveEmployee(employee);
+        EmployeeDTO savedEmployeeDTO = EmployeeMapper.toEmployeeDTO(savedEmployee);
+        return ResponseEntity.ok(savedEmployeeDTO);
+    }
+ 
+    // Get an employee by ID (Return DTO)
+    @GetMapping("/{id}")
+    public ResponseEntity<EmployeeDTO> getEmployee(@PathVariable Long id) {
+        Optional<Employee> employee = employeeService.getEmployeeById(id);
+        return employee.map(emp -> {
+            EmployeeDTO employeeDTO = EmployeeMapper.toEmployeeDTO(emp);
+            return ResponseEntity.ok(employeeDTO);
+        }).orElse(ResponseEntity.notFound().build());
+    }
+ 
+    // Update an existing employee (Accept and Return DTO)
+    @PutMapping("/{id}")
+    public ResponseEntity<EmployeeDTO> updateEmployee(@PathVariable Long id, @RequestBody EmployeeDTO employeeDTO) {
+        try {
+            // Convert DTO to Entity
+            Employee employeeToUpdate = EmployeeMapper.toEmployeeEntity(employeeDTO);
+            // Update and map back to DTO
+            Employee updatedEmployee = employeeService.updateEmployee(id, employeeToUpdate);
+            EmployeeDTO updatedEmployeeDTO = EmployeeMapper.toEmployeeDTO(updatedEmployee);
+            return ResponseEntity.ok(updatedEmployeeDTO);
+        } catch (RuntimeException e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
+ 
+    // Delete an employee
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteEmployee(@PathVariable Long id) {
+        employeeService.deleteEmployee(id);
+        return ResponseEntity.ok().build();
+    }
+}
+ 
+ 
+public class EmployeeDTO {
+    private Long id;   // Expose the ID
+    private String name; // Expose only the name
+    private String role; // New field exposed instead of 'department'
+ 
+    // Constructors
+    public EmployeeDTO() {
+    }
+ 
+    public EmployeeDTO(Long id, String name, String role) {
+        this.id = id;
+        this.name = name;
+        this.role = role;
+    }
+ 
+    // Getters and Setters
+    public Long getId() {
+        return id;
+    }
+ 
+    public void setId(Long id) {
+        this.id = id;
+    }
+ 
+    public String getName() {
+        return name;
+    }
+ 
+    public void setName(String name) {
+        this.name = name;
+    }
+ 
+    public String getRole() {
+        return role;
+    }
+ 
+    public void setRole(String role) {
+        this.role = role;
+    }
+}
+ 
+ 
+public class EmployeeMapper {
+ 
+    // Convert Employee Entity to EmployeeDTO (For API Response)
+    public static EmployeeDTO toEmployeeDTO(Employee employee) {
+        if (employee == null) {
+            return null;
+        }
+        return new EmployeeDTO(
+                employee.getId(),
+                employee.getName(),
+                employee.getDepartment() // Assume 'department' maps to 'role' in the DTO
+        );
+    }
+ 
+    // Convert EmployeeDTO to Employee Entity (For API Request)
+    public static Employee toEmployeeEntity(EmployeeDTO employeeDTO) {
+        if (employeeDTO == null) {
+            return null;
+        }
+ 
+        Employee employee = new Employee();
+        employee.setId(employeeDTO.getId()); // Set ID if present
+        employee.setName(employeeDTO.getName());
+        employee.setDepartment(employeeDTO.getRole()); // Assume 'role' maps to 'department' in the Entity
+        return employee;
+    }
+}
+ 
+ 
+import jakarta.persistence.*;
+ 
+@Entity
+public class Employee {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+ 
+    private String name;
+    private String department;
+    private Double salary;
+ 
+    // Getters & Setters
+    public Long getId() {
+        return id;
+    }
+ 
+    public void setId(Long id) {
+        this.id = id;
+    }
+ 
+    public String getName() {
+        return name;
+    }
+ 
+    public void setName(String name) {
+        this.name = name;
+    }
+ 
+    public String getDepartment() {
+        return department;
+    }
+ 
+    public void setDepartment(String department) {
+        this.department = department;
+    }
+ 
+    public Double getSalary() {
+        return salary;
+    }
+ 
+    public void setSalary(Double salary) {
+        this.salary = salary;
+    }
+}
+ 
+import org.springframework.data.jpa.repository.JpaRepository;
+ 
+public interface EmployeeRepository extends JpaRepository<Employee, Long> {
+}
+ 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+ 
+import java.util.Optional;
+ 
+@Service
+public class EmployeeService {
+    @Autowired
+    private EmployeeRepository employeeRepository;
+ 
+    public Employee saveEmployee(Employee employee) {
+        return employeeRepository.save(employee);
+    }
+ 
+    public Optional<Employee> getEmployeeById(Long id) {
+        return employeeRepository.findById(id);
+    }
+ 
+    public Employee updateEmployee(Long id, Employee updatedEmployee) {
+        return employeeRepository.findById(id).map(employee -> {
+            employee.setName(updatedEmployee.getName());
+            employee.setDepartment(updatedEmployee.getDepartment());
+            employee.setSalary(updatedEmployee.getSalary());
+            return employeeRepository.save(employee);
+        }).orElseThrow(() -> new RuntimeException("Employee not found"));
+    }
+ 
+    public void deleteEmployee(Long id) {
+        employeeRepository.deleteById(id);
+    }
+}
+ 
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+ 
+@SpringBootApplication
+public class CrudApplication {
+ 
+	public static void main(String[] args) {
+		SpringApplication.run(CrudApplication.class, args);
+	}
+ 
+}

@@ -1,0 +1,439 @@
+You said: C:\Users\shaily_priya>, this line is shown in my cmd, how to proceed so that I can write my first command in git
+ChatGPT said: It looks like your Command Prompt is open and currently inside the C:\Users\shaily_priya> directory. To start using Git, follow these steps:
+
+1. Check if Git is Installed
+git --version
+If Git is installed, it will show a version number (e.g., git version 2.XX.X).
+
+2. Set Up Your Git Configuration
+git config --global user.name "Your Name"
+git config --global user.email "your-email@example.com"
+
+3. Navigate to Your Project Folder
+If you want to initialize Git in a specific project folder, navigate to it using cd: cd path\to\your\project
+For example, if your project is in Documents:
+cd C:\Users\shaily_priya\Documents\MyProject
+
+4. Initialize a Git Repository
+Inside your project folder, initialize Git with:
+git init
+This will create a .git directory, making it a Git repository.
+
+5. Check Git Status
+git status
+This will show the current status of your repository.
+
+6. Make Your First Commit
+If you have files in your project, add them to Git:
+git add .
+Commit them with a message:
+git commit -m "Initial commit"
+
+
+You said: This will create a `.git` directory, making it a Git repository.How can I view this .git file
+ChatGPT said: The .git directory is hidden by default. To view it, follow these :
+Using Command Prompt (CMD)
+Navigate to your project folder and run:
+cd path\to\your\project
+For example:
+cd C:\Users\shaily_priya\Documents\MyProject
+Then, list all files including hidden ones:
+dir /a
+This will show the .git folder if it exist
+
+
+You said: This will show the `.git` folder if it exists. How do I view contents inside git folder
+ChatGPT said: Run this command in your project folder: dir .git /a
+
+You said: how do I view contents inside git folder in git bash
+ChatGPT said: Run this command in Git Bash: ls -la .git
+
+
+You said: how to create a new file in git bash, I am inside Documents/JavaProject
+ChatGPT said: Run this command in Git Bash to create a new file:
+touch filename.txt
+Replace filename.txt with your desired file name, e.g., Main.java.
+
+You said:
+how to put untracked files in staging area in git bash, how is it useful
+ChatGPT said:
+To put untracked files in the staging area, run:
+git add filename
+or to add all untracked files:
+git add .
+Why is it useful?
+It prepares files for the next commit.
+Allows reviewing changes before committing.
+Helps in organizing changes logically. 
+
+
+You said:
+what should be my next step in git bash, tell me in very short
+ChatGPT said:
+git commit -m "Your commit message"
+This saves the staged changes in Git history. 
+
+
+You said:
+what is -m
+ChatGPT said:
+The -m flag in Git is used to specify a commit message inline, like this:
+git commit -m "Your commit message"
+It helps in quickly adding a message without opening a text editor. 🚀
+
+You said:
+I made names.txt file inside JavaProject, how to add something inside that
+ChatGPT said:
+Run this in Git Bash to add text to names.txt:
+echo "Your text here" >> names.txt
+or open it in Vim:
+vim names.txt
+Press i to insert text, then Esc, type :wq, and press Enter to save and exit. 🚀
+
+You said:
+what is vim
+ChatGPT said:
+Vim is a powerful text editor used in the terminal. It is highly efficient for coding and editing files.
+Basic Vim Commands:
+Open a file: vim filename.txt
+Insert mode (to type): Press i
+Save and exit: Press Esc, then type :wq and press Enter
+Exit without saving: Press Esc, then type :q! and press Enter
+
+You said:
+why do I need to open my file in vim to edit text, can I do that in git bash only
+ChatGPT said:
+Yes, you can edit the file directly in Git Bash without opening Vim. Use this command to add text:
+echo "Your text here" >> names.txt
+To view the file's content:
+cat names.txt
+If you want to edit the file interactively, Vim or another editor is needed. 
+
+
+You said:
+I have opened vim, and written some text inside names.txt
+ChatGPT said:
+Great! Now, to save and exit Vim, follow these steps:
+Press Esc (to exit insert mode).
+Type :wq (write and quit).
+Press Enter.
+Your changes are now saved in names.txt. 
+
+
+You said:
+git add .
+warning: in the working copy of 'names.txt', LF will be replaced by CRLF the next time Git touches it
+why is gitbash giving me this warning
+
+ChatGPT said:
+This warning appears because Git is automatically converting line endings from LF (Linux-style) to CRLF (Windows-style) when checking out files on Windows. This happens due to Git's core.autocrlf setting.
+
+
+You said:
+what to do if I want to remove something from staging area, basically I have added it and now I do not want to commit them
+ChatGPT said:
+To remove a file from the staging area (but keep it in your working directory), run:
+git reset filename
+or to unstage all files:
+git reset
+Your changes will still be there, but they won’t be committed.
+
+You said:
+what does this command do : git restore --staged names.txt
+ChatGPT said:
+The command: git restore --staged names.txt
+removes names.txt from the staging area but keeps your changes in the working directory.
+
+Equivalent to git reset names.txt.
+Useful when you added a file by mistake but don’t want to lose your edits. 🚀
+
+You said:
+what does this command do : git log
+ChatGPT said:
+git log
+Shows the commit history of the repository, including:
+Commit hashes
+Author names
+Commit dates
+Commit messages
+
+You said:
+what does this command do : rm -rf names.txt
+ChatGPT said:
+The command: rm -rf names.txt
+Forcefully deletes names.txt without asking for confirmation.
+
+ rm → Removes a file
+-r → Recursively deletes (used for directories)
+-f → Forces deletion without warnings
+Be careful! This action cannot be undone.
+
+you said : what if I deleted that file and I want to retrieve that, for that I'll have to remove that commit from history, but commits are like this, file deleted, file modified, file added, we cannot remove one commit from middle, because every commit is build on top of each other, so what we do is copy that hashcode from whose top commits you want to remove, and then do git reset (hashcode), so whatever we did to names.txt, deleted and modified, everyting went to unstagged area, (this is something like, jinka photo le liya gya tha aur ab delete kr dia, and now they are back with those people jinki photo ny li gyi h)
+
+What is git stash?(backstage me daal diya)
+git stash is a command that temporarily saves your uncommitted changes without committing them, allowing you to switch branches or work on something else without losing progress.
+What Does Stashing Mean?
+Stashing means saving your work temporarily without committing, so you can come back to it later.
+Jinko backstage me rakhna h(jinp stashing lagana h), unko pahle stage me lekr ayenge
+rename hogya names.txt to surnames.txt
+created new file surnames.txt
+fir git stash kiya, to keep all of them in backstage and now git status krnge toh sab clean dikh rha
+
+bringing all the people back to unstagged area : git stash pop
+git add . then git stash then git stash clear : backstage vala sara chala gya, kuch bhi remaining ny h ab
+
+The command:
+git remote add origin <URL> (add means you are adding a url, origin means what is the name of the url you are going to add)
+Adds a remote repository (usually GitHub, GitLab, or Bitbucket) and names it origin.
+Breaking it down:
+git remote add → Adds a new remote repository.
+origin → A common alias for the remote (you can name it something else).
+<URL> → The repository URL (e.g., https://github.com/user/repo.git).
+
+git remote -v shows the remote repositories linked to your local repo, including their fetch and push URLs.
+git push origin master : apni files and respective changes ko hum push krna chahte hai, origin vale url me and master vale branch me
+
+4 Locations in Git (Explained with a Real-Life Example)
+Imagine you are writing a research paper on your laptop and submitting it to a professor via email. Here’s how the 4 Git locations relate to this scenario:
+
+Working Directory (Your Draft on Your Laptop)
+This is where you actively make changes, just like typing and editing your research paper.
+In Git, this includes all files in your project folder, whether tracked or untracked.
+
+Command to check:
+git status
+(Shows modified/untracked files in the working directory)
+
+Staging Area (Selecting Parts to Submit)
+Before sending your paper, you might highlight the sections you want to finalize.
+In Git, you stage files before committing them.
+
+Command to add files to staging:
+git add filename
+or
+git add .
+(Adds all changes to staging)
+
+Local Repository (Saved Version on Your Laptop)
+Once you're satisfied, you save a final version on your laptop.
+In Git, this is called a commit—a saved snapshot of your project.
+
+Command to commit:
+git commit -m "Finalized draft"
+(This saves the changes permanently in your local repo)
+
+Remote Repository (Sending to Professor via Email)
+Finally, you email the research paper to your professor so it's stored online.
+In Git, the remote repo (e.g., GitHub) stores the project online for collaboration or backup.
+
+Command to push to remote:
+git push origin master
+git push origin main
+(This uploads commits to GitHub/GitLab/Bitbucket)
+
+Summary Table
+Git Location	        Real-Life Example
+Working Directory	Editing your research paper
+Staging Area	        Selecting parts to finalize
+Local Repository	Saving a version on your laptop
+Remote Repository	Sending it via email to professor
+
+commit 11a951f99013ef6e68f2dff0c9a8f0dabb4d9ce8 (origin/master)
+Author: Shaily Priya <shaily_priya@epam.com>
+Date:   Mon Mar 24 16:53:59 2025 +0530
+
+    msggg
+latest commit on remote branch : whenever we do lots of commits (like c0, c1, c2, c3 etc.) all of them are linked to each other like branch, internally this is directed acyclic graph :
+c0 <-- c1 <-- c2 <-- c3
+By default the name of this branch is main, previously it was called as master.
+Use of branch : whenever you are working on some other feature or you are resolving a bug, always create a separate branch.
+You should never commit on master or main branch because :
+1) main (or master) is the production-ready branch, direct commits may introduce bugs or breaking changes.(basically jo bhi humara code h, jo abhi tk finalize ny hua h, usme kuch errors ho sakte hain)
+
+2) Working on a separate feature branch (feature-x) allows for pull requests & code reviews before merging.
+
+git branch feature : creates a new branch called as feature
+git checkout feature : Switches to the feature branch.(head is now pointing to feature branch, head is just a pointer which says that all the commits that you will make will be added to head)
+
+Shortcut: Instead of two commands, you can use:
+git checkout -b feature
+
+git commit
+git commit(ye sare commits feature branch me honge)
+
+git checkout main(again head is pointing to main branch)
+git commit(wapas commit ab main branch me hoga)
+
+Now whatever changes I made in feature branch is now finalized and I want to merge them in main branch, so that other people can look at them :
+git merge feature
+
+Now I want to push new commits into master branch:
+git push origin master
+
+AzureAD+ShailyPriya@EP-5CG1032V8L MINGW64 ~/Documents/JavaProject (master)
+$ git log
+commit e2a1726a3936dee92502d979b6b7d714746b4fdc (HEAD -> master, origin/master)
+Author: Shaily Priya <shaily_priya@epam.com>
+Date:   Tue Mar 25 10:25:14 2025 +0530
+
+    modified hotel.txt
+this is the most recent commit in git log, which has (origin/master) at the end which means that there are no more commits left which we need to push to our remote repository.
+
+Now we want to do some changes in other's project, lets say Payroll-System is the project where I want to do some changes, but obviously we dont have access to that.
+
+Now what we do is, we create a copy of that project in our account, by using fork button in git.epam.com, when the fork process is done completely, then we can view the whole project in our remote repo:
+So Pankaj Sunil Ganage / Payroll-System looks like Shaily Priya / Payroll-System in my account.
+
+Now since I have the whole project I can do any changes I want to do in my project. Now go to code and take the https url from there, and write command on git bash as : 
+
+git clone https://git.epam.com/shaily_priya/payroll-system.git
+cd payroll-system
+cat README.md
+
+So, we know that origin url is my account, from where we have forked the url, that is known as upstream url by default
+now doing git remote add upstream <url> :https://git.epam.com/pankajsunil_ganage/payroll-system.git
+
+git remote -v : it will show how many remote repositories are linked to our account :
+$ git remote -v
+origin          https://git.epam.com/shaily_priya/payroll-system.git (fetch)
+origin          https://git.epam.com/shaily_priya/payroll-system.git (push)
+upstream        https://git.epam.com/pankajsunil_ganage/payroll-system.git (fetch)
+upstream        https://git.epam.com/pankajsunil_ganage/payroll-system.git (push)
+
+Now what I did is : vim README.md and then I added some content there, then git status says : modified README.md,(yahn pr bas file me change kra and usko commit ny kra toh kuch bhi hua ny h changes) but all this we are doing in main branch only, so now we should make a new branch and do everything in that, because doing any kind of changes is not preferred in main branch.
+
+Now creating a feature branch, "git branch shaily", then "git checkout shaily", so now we are in shaily branch, now we do "git add .", then committed a message, then jb git log krenge toh we can see that last commit made by us was only that message which we committed inside shaily branch.
+
+Now we do "git push origin shaily" which pushes the shaily branch from my local repo to remote repo.
+
+Now we want to set vs code as our code editor, "git config --global core.editor "code --wait", isse set hogya, ab if you want to do any changes in README.md, type "code ." in git , it opens complete files and folders inside vs code, just do the required changes and now type "git status", this shows that modified but in red, which means that changes has been done but not committed, so now do "git add .", then do "git commit".
+
+Now we do "git push --set-upstream origin shaily":
+Sets the shaily branch as the upstream branch for origin/shaily and pushes it to the remote repository.
+
+Breakdown of the Command:
+git push → Pushes local changes to the remote repository.
+--set-upstream (or -u) → Establishes a tracking link between your local shaily branch and origin/shaily.
+origin → The remote repository (usually GitHub).
+shaily → The branch being pushed.
+
+(basically it will push shaily branch in remote repo, is case me shaily branch bhi jayega remote repo me)
+
+2nd way:
+Another way to do changes in main of remote repo :
+git checkout main : Switches to the main branch (your primary branch).
+
+git merge shaily : Merges the changes from the shaily branch into main.
+If there are no conflicts, Git will directly merge.
+If there are conflicts, Git will prompt you to resolve them manually.
+
+git push : Pushes the updated main branch to the remote repository (origin/main).
+Now, the main branch on GitHub includes all the changes from shaily.
+Your shaily branch’s work is merged into main, and the updated main branch is pushed to GitHub.
+Now, you can delete the shaily branch if it's no longer needed:
+git branch -d shaily  # Deletes locally  
+git push origin --delete shaily  # Deletes from remote 
+(but is case shaily branch remote repo me ny h, sirf jo usme changes kre the bas wahi hain)
+
+Is the shaily Branch Created in the Remote Repository?(in 2nd case)
+It depends on whether you pushed the shaily branch before merging:
+git push origin shaily
+The shaily branch exists in the remote repository (origin/shaily).
+
+If you only worked locally and never pushed it
+The shaily branch exists only in your local repository, not in the remote.
+(shaily itself still exists in the remote if it was pushed earlier, since we have not pushed it earlier, it is not there in remote repo)
+
+This was all about bringing changes from local repo to remote repo, now we want to have these changes in real project, which is done through pull request : A Pull Request (PR) is a request to merge changes from one branch into another, allowing code review before merging.
+
+Pull Request (PR) vs. Merge Request (MR)
+Both are used to request merging changes from one branch to another, but the terminology differs based on the platform.
+
+Term	                Used in	                                Purpose
+Pull Request (PR)	GitHub, Bitbucket	                Requests to merge changes from one branch (e.g., feature-branch) into another (e.g., main).
+Merge Request (MR)	GitLab	                                Same as a Pull Request but used in GitLab.
+
+How They Work?
+You create a new branch (e.g., feature-branch).
+Make changes and commit them locally.
+Push the branch to the remote repository (git push origin feature-branch).
+Open a Pull Request (PR) or Merge Request (MR) in the platform’s UI.
+Reviewers check the code, approve, and merge it into the main branch.
+
+Differences:
+Terminology: PR (GitHub, Bitbucket) vs. MR (GitLab).
+Process: Same concept, different platforms.
+
+3rd way to do:
+The command git push origin shaily pushes the local shaily branch to the remote repository (origin).
+What Happens?
+If shaily does not exist remotely, it creates a new remote branch named shaily.
+If shaily already exists remotely, it updates it with the latest local commits.
+This allows others to pull and work on the shaily branch from the remote repository.
+
+Now if we want to do some more changes, and we do few commits, all the commits will be added to same pull request.
+So it is always suggested to have separate feature branches for separate works, we cant create all the pull request for main branch, because it will be so messy. If a branch already has a pull request associated to it, it will not allow you to create another pull request.One pull request means one branch.
+
+Here, we want to remove commit : names.txt added
+Now if we want to remove one commit, do git log, check which commit you want to remove, take hashcode below that commit and do git reset <hashcode>, then do git status, then you will see that particular thing will be unstagged, you can see names.txt in red.
+
+Now do git add . and then git stash, so now it goes to some stash area.
+Now if we want to push the branch, so we have to forcefully push that, because that contains one commit which our git log doesnot, so to force push that do "git push origin shaily -f", doing this removes "names.txt added" commit from my remote repo(Shaily Priya/Payroll-System/Commits)
+
+How to make sure that main branch of my remote repo(fork of Pankaj) and main branch of Pankaj's remote repo is same and balanced?
+you can do it using fetch upstream(in GitHub) and update fork in GitLab.
+
+Another way to do it : 
+1) git checkout main
+2) git fetch --all --prune : The command git fetch --all --prune fetches updates from all remotes and removes references to deleted remote branches from your local repository.
+3) The command git reset --hard upstream/main forcefully resets your current branch(which is main right now) to exactly match upstream/main, discarding any local changes (both staged and unstaged).
+Warning: This erases all uncommitted changes and resets your branch to the state of upstream/main.
+
+Now if I add one commit in Pankaj's remote repo, so now I want that commit in my remote repo, for that we do : git pull upstream main
+The command git pull upstream main fetches the latest changes from the main branch of the upstream repository and merges them into your current branch.
+
+I created one branch as temp, git branch temp, git checkout temp
+then, added 4 files in that(touch 1, 2, 3, 4), then do git log, we see all 4 commits,
+How to merge all the commits in one single commit?
+1) One way to do is by git reset <5th commit from top>, by doing this all the commits will be unstagged, and then by doing git add . and then git commit -m "msg" you can do all the commits in one step.
+2) If you copy 5th commit, and then do git rebase -i "<5th ccommit>", 
+Now something like this appears:
+pick ----- 1
+pick ----- 2
+pick ----- 3
+pick ----- 4
+all the commits above 5th commit, we can either pick or squash them, if we do :
+pick ----- 1
+s ----- 2
+s ----- 3
+s ----- 4,  this means all 3 commits(2, 3, 4) will be squashed into pick which means all the commits will be merged into that pick 1.
+squash means, whichever is listed as pick, merge it into the previous commit, here 2, 3 and 4 are marked as squash so all three will be merged with 1, if we do 
+pick ----- 1
+s ----- 2
+s ----- 3
+pick ----- 4, this means that 2 and 3 will be merged with 1, so "s" means whatever pick you have above that squash, merge s with that pick.
+
+When you write that rebase command, it opens vs code file, set there 
+pick ----- 1
+s ----- 2
+s ----- 3
+s ----- 4, then Ctrl+S, then Ctrl+W, it saves and closes vs code, then again one file opens in vs code, there you need to write commit message for all, now save and close, then do git log, you will be able to view only one commit in place of 4 commits.
+
+Now do : git reset --hard <code>
+
+The command git reset --hard <commit-hash> resets your current branch to the specified commit, discarding all changes after that commit (both staged and unstaged).
+
+Effects : Moves the HEAD and branch pointer to the specified commit.
+Deletes all changes after that commit from the working directory and staging area.
+Irreversible if changes are not committed elsewhere.
+
+Warning : All uncommitted changes will be lost permanently.
+Use git reset --soft instead if you want to keep changes staged.
+
+Merge Conflicts: If I changed at line no 3 in some file and another person also make changes to line no 3 in that file only, then git is confused whose changes should be committed.
+Solu : go to resolve conflicts , then chose which which one do you want, then do mark as resolved, then do committing merges.
+
+
+
+
+

@@ -1,0 +1,271 @@
+#1
+Spring Boot is module of spring from which we speed up the development.
+(mvc, orm, jpa)
+It provides an easier and fastre way to set up, configure and run both simple and web-based applications.
+Spring framework + embedded servers - configuration = boot
+It provides convention over configuration software design style.
+Opinionated default - automatically configure
+Scan the class path and find the dependency it will automatically configure the things.
+
+Advantages of Spring Boot:
+It creates stand alone spring application that cab be started using java-jar.
+Embedded Tomcat, Jetty directly.
+Provide opionionated dependencies to simplify your build configuration.
+Automatically configure spring and 3rd party libraries whenever possible.
+Provide production readt features.
+No code generation and no requirement for xml configuration.
+
+#2
+Starter POM
+spring-boot-starter-web
+spring-boot-starter-data-jpa
+these are dependencies which are added
+
+When we add starter jars, then it pulls all the jars
+Jar contains : META-INF/spring.factories(inside spring.factories, all configurations are given ki kiske liye konsi chalegi, vo configuration classes enable hoti hain kuch conditions par, pahle class path scan hoga, usme agar data-jpa ki dependency milti h toh jpa vali configuration enable hogi)
+
+#3
+How to start with spring boot?
+1) Create a maven project and add starter dependencies.
+2) Use spring initializer
+3) Use IDE like STS(spring tool suite)
+4) Spring boot command line interface
+
+#4
+Creating spring project using spring initializer
+@SpringBootApplication = @Configuration+@EnableAutoConfiguration+@ComponentScan
+
+We can mention configurations in application.properties
+
+
+
+######################################################################################################################################################
+Streams Q/A
+
+1. Write a Java program to calculate the average of a list of integers using streams.
+
+public class Main {
+  public static void main(String[] args) {
+    List < Integer > nums = Arrays.asList(1, 3, 6, 8, 10, 18, 36);
+    System.out.println("List of numbers: " + nums);
+
+    // Calculate the average using streams
+    double average = nums.stream()
+      .mapToDouble(Integer::doubleValue)
+      .average()
+      .orElse(0.0);
+
+    System.out.println("Average value of the said numbers: " + average);
+  }
+}
+
+2. Write a Java program to convert a list of strings to uppercase or lowercase using streams.
+
+public class Main {
+  public static void main(String[] args) {
+    List < String > colors = Arrays.asList("RED", "grEEn", "white", "Orange", "pink");
+    System.out.println("List of strings: " + colors);
+    // Convert strings to uppercase using streams
+    List < String > uppercaseStrings = colors.stream()
+      .map(String::toUpperCase)
+      .collect(Collectors.toList());
+
+    System.out.println("\nUppercase Strings: " + uppercaseStrings);
+
+    // Convert strings to lowercase using streams
+    List < String > lowercaseStrings = colors.stream()
+      .map(String::toLowerCase)
+      .collect(Collectors.toList());
+
+    System.out.println("Lowercase Strings: " + lowercaseStrings);
+  }
+}
+
+3. Write a Java program to calculate the sum of all even, odd numbers in a list using streams.
+
+public class NumberSum {
+  public static void main(String[] args) {
+    List < Integer > numbers = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+
+    // Sum of even numbers
+    int sumOfEvens = numbers.stream()
+      .filter(num -> num % 2 == 0)
+      .mapToInt(Integer::intValue)
+      .sum();
+
+    System.out.println("Sum of even numbers: " + sumOfEvens);
+
+    // Sum of odd numbers
+    int sumOfOdds = numbers.stream()
+      .filter(num -> num % 2 != 0)
+      .mapToInt(Integer::intValue)
+      .sum();
+
+    System.out.println("Sum of odd numbers: " + sumOfOdds);
+  }
+}
+
+4. Write a Java program to remove all duplicate elements from a list using streams.
+
+public class Main {
+  public static void main(String[] args) {
+    List < Integer > nums = Arrays.asList(10, 23, 22, 23, 24, 24, 33, 15, 26, 15);
+    System.out.println("Original List of numbers: " + nums);
+    // Remove duplicates
+    List < Integer > distinctNumbers = nums.stream()
+      .distinct()
+      .collect(Collectors.toList());
+    System.out.println("After removing duplicates from the said list: " + distinctNumbers);
+  }
+}
+
+
+5. Write a Java program to count the number of strings in a list that start with a specific letter using streams.
+
+public class Main {
+  public static void main(String[] args) {
+    List < String > colors = Arrays.asList("Red", "Green", "Blue", "Pink", "Brown");
+    System.out.println("Original list of strings (colors): " + colors);
+    char startingLetter = 'B';
+    // Count strings starting with a specific letter
+    long ctr = colors.stream()
+      .filter(s -> s.startsWith(String.valueOf(startingLetter)))
+      .count();
+    System.out.println("\nNumber of colors starting with '" + startingLetter + "': " + ctr);
+    char startingLetter1 = 'Y';
+    // Count strings starting with a specific letter
+    ctr = colors.stream()
+      .filter(s -> s.startsWith(String.valueOf(startingLetter1)))
+      .count();
+    System.out.println("\nNumber of colors starting with '" + startingLetter1 + "': " + ctr);
+  }
+}
+
+6. Write a Java program to sort a list of strings in alphabetical order, ascending and descending using streams.
+
+public class Main {
+  public static void main(String[] args) {
+    List < String > colors = Arrays.asList("Red", "Green", "Blue", "Pink", "Brown");
+    System.out.println("Original List of strings(colors): " + colors);
+    // Sort strings in ascending order
+    List < String > ascendingOrder = colors.stream()
+      .sorted()
+      .collect(Collectors.toList());
+
+    // Sort strings in descending order
+    List < String > descendingOrder = colors.stream()
+      .sorted(Comparator.reverseOrder())
+      .collect(Collectors.toList());
+
+    System.out.println("\nSorted in Ascending Order: " + ascendingOrder);
+    System.out.println("\nSorted in Descending Order: " + descendingOrder);
+  }
+}
+
+7. Write a Java program to find the maximum and minimum values in a list of integers using streams.
+
+public class MinMaxFinder {
+    public static void main(String[] args) {
+        List<Integer> numbers = Arrays.asList(2, 3, 4, 5, 1);
+
+        // Finding maximum value
+        OptionalInt max = numbers.stream().mapToInt(Integer::intValue).max();
+        max.ifPresent(value -> System.out.println("Max: " + value));
+        // System.out.println(max);
+
+        // Finding maximum value(other way)
+        // Optional<Integer> max = numbers.stream().max(Integer::compare);
+        // max.ifPresent(value -> System.out.println("Max: " + value));
+
+
+        // Finding minimum value
+        Optional<Integer> min = numbers.stream().min(Integer::compare);
+        min.ifPresent(value -> System.out.println("Min: " + value));
+    }
+}
+
+8. Write a Java program to find the second smallest and largest elements in a list of integers using streams.
+
+public class Main {
+  public static void main(String[] args) {
+    List < Integer > nums = Arrays.asList(1, 17, 54, 14, 14, 33, 45, -11);
+    System.out.println("List of numbers: " + nums);
+    // Find the second smallest element
+    Integer secondSmallest = nums.stream()
+      .distinct()
+      .sorted()
+      .skip(1)
+      .findFirst()
+      .orElse(null);
+
+    // Find the second largest element
+    Integer secondLargest = nums.stream()
+      .distinct()
+      .sorted((a, b) -> Integer.compare(b, a))
+      .skip(1)
+      .findFirst()
+      .orElse(null);
+
+    System.out.println("\nSecond smallest element: " + secondSmallest);
+    System.out.println("\nSecond largest element: " + secondLargest);
+  }
+}
+
+Basic Level (1-15)
+1. How do you create a stream from a list of integers?
+2. How do you convert a stream back to a list?
+3. How do you find the count of elements in a stream?
+4. How do you filter even numbers from a list using streams?
+5. How do you transform a list of strings to uppercase using streams?
+6. How do you sort a list of numbers using streams?
+7. How do you limit a stream to the first 5 elements?
+8. How do you skip the first 3 elements in a stream?
+9. How do you find the first element of a stream?
+10.How do you check if all elements in a stream match a given condition?
+11.How do you check if any element in a stream matches a given condition?
+12.How do you remove duplicate elements from a list using streams?
+13.How do you collect elements from a stream into a Set?
+14.How do you generate an infinite stream of random numbers?
+15.How do you create a stream from an array?
+
+Intermediate Level (16-35)
+1. How do you find the sum of a list of integers using streams?
+2. How do you find the maximum and minimum values in a stream?
+3. How do you find the average of numbers in a list using streams?
+4. How do you concatenate multiple lists into a single stream?
+5. How do you group a list of numbers into even and odd using streams?
+6. How do you group a list of employees by department using streams?
+7. How do you find the second highest number in a list using streams?
+8. How do you partition a list of numbers into two groups: greater than 10 and less than 10?
+9. How do you count occurrences of each word in a list using streams?
+10.How do you remove null values from a list using streams?
+11.How do you concatenate all strings in a list into a single string using streams?
+12.How do you flatten a list of lists into a single list using streams?
+13.How do you find duplicate elements in a list using streams?
+14.How do you get the top 3 highest numbers from a list using streams?
+15.How do you convert a list of strings into a map of string-length pairs?
+16.How do you find the longest word in a list using streams?
+17.How do you get distinct characters from a list of strings?
+18.How do you merge two maps using streams?
+19.How do you extract a sublist based on a condition using streams?
+20.How do you shuffle elements in a list using streams?
+
+Advanced Level (36-50)
+1. How do you implement a custom collector?
+2. How do you sort a list of objects based on multiple fields using streams?
+3. How do you parallelize a stream for better performance?
+4. How do you handle exceptions inside stream operations?
+5. How do you compute the frequency of characters in a string using streams?
+6. How do you implement a sliding window over a stream?
+7. How do you find the most frequently occurring element in a list using streams?
+8. How do you implement a custom comparator for sorting using streams?
+9. How do you perform batch processing on a stream?
+10.How do you collect results of a stream into an immutable collection?
+11.How do you implement pagination using streams?
+12.How do you convert a nested object structure into a flat list using streams?
+13.How do you dynamically apply filters to a stream based on runtime conditions?
+14.How do you convert an Iterator into a Stream?
+16.How do you create a summary report (e.g., count, sum, min, max, average) for a dataset using streams?
+
+
+

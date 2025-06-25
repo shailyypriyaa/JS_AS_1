@@ -1,0 +1,209 @@
+###################################################
+class Parent {
+    Parent() {
+        System.out.println("Parent Constructor");
+    }
+
+    void show() {
+        System.out.println("Parent show()");
+    }
+}
+
+class Child extends Parent {
+    Child() {
+        System.out.println("Child Constructor");
+    }
+
+    @Override
+    void show() {
+        System.out.println("Child show()");
+    }
+}
+
+class GrandChild extends Child {
+    GrandChild() {
+        System.out.println("GrandChild Constructor");
+    }
+
+    @Override
+    void show() {
+        System.out.println("GrandChild show()");
+    }
+}
+
+public class Test {
+    public static void main(String[] args) {
+        Parent obj1 = new Child();
+        obj1.show();
+
+        System.out.println("----------------");
+
+        Parent obj2 = new GrandChild();
+        obj2.show();
+    }
+}
+🔍 Predict the Output Before Running!
+Breakdown of Execution:
+Parent obj1 = new Child();
+
+Parent constructor runs first (because parent constructor is always called first).
+Then, Child constructor runs.
+When obj1.show(); is called, runtime polymorphism executes Child's overridden method.
+Parent obj2 = new GrandChild();
+
+Parent constructor runs first.
+Then, Child constructor runs.
+Then, GrandChild constructor runs.
+When obj2.show(); is called, runtime polymorphism executes GrandChild's overridden method.
+✅ Expected Output:
+
+Parent Constructor
+Child Constructor
+Child show()
+----------------
+Parent Constructor
+Child Constructor
+GrandChild Constructor
+GrandChild show()
+
+######################################################
+class Parent {
+    Parent() {
+        System.out.println("Parent Constructor");
+        show();
+    }
+
+    void show() {
+        System.out.println("Parent show()");
+    }
+}
+
+class Child extends Parent {
+    int x = 10;
+
+    Child() {
+        System.out.println("Child Constructor");
+    }
+
+    @Override
+    void show() {
+        System.out.println("Child show(): x = " + x);
+    }
+}
+
+public class Test {
+    public static void main(String[] args) {
+        Parent obj = new Child();
+    }
+}
+🔍 Expected Output:
+Parent Constructor
+Child show(): x = 0
+Child Constructor
+📌 Explanation:
+Parent Constructor is called first (super() is implicitly added).
+Inside the Parent Constructor, the method show() is called.
+Since Child has overridden show(), Child's show() executes.
+However, at this moment, Child's instance variables (x) are not initialized yet. So x = 0 (default value).
+Child Constructor runs and sets x = 10, but it's too late for the previous method call.
+
+#####################################################33
+class Parent {
+    static void display() {
+        System.out.println("Parent display()");
+    }
+
+    void show() {
+        System.out.println("Parent show()");
+    }
+}
+
+class Child extends Parent {
+    static void display() {
+        System.out.println("Child display()");
+    }
+
+    @Override
+    void show() {
+        System.out.println("Child show()");
+    }
+}
+
+public class Test {
+    public static void main(String[] args) {
+        Parent obj = new Child();
+        obj.display();
+        obj.show();
+    }
+}
+🔍 Expected Output:
+Parent display()
+Child show()
+📌 Explanation:
+Static methods are not overridden; they are hidden (method hiding).
+obj.display(); refers to Parent’s display() because static methods are bound at compile-time based on reference type (Parent).
+obj.show(); executes Child’s overridden method due to runtime polymorphism.
+
+#################################################
+class Parent {
+    private void privateMethod() {
+        System.out.println("Parent privateMethod()");
+    }
+
+    void show() {
+        privateMethod();
+    }
+}
+
+class Child extends Parent {
+    void privateMethod() {  // This is NOT overriding (private methods can't be overridden)
+        System.out.println("Child privateMethod()");
+    }
+}
+
+public class Test {
+    public static void main(String[] args) {
+        Parent obj = new Child();
+        obj.show();
+    }
+}
+🔍 Expected Output:
+Parent privateMethod()
+📌 Explanation:
+Private methods are not inherited and cannot be overridden.
+The privateMethod() inside Child is a completely separate method, not an override.
+obj.show(); calls Parent's show(), which in turn calls Parent’s privateMethod().
+Child’s privateMethod() is never executed.
+
+#####################################################
+class Parent {
+    void show() {
+        System.out.println("Parent show()");
+    }
+}
+
+class Child extends Parent {
+    @Override
+    void show() {
+        System.out.println("Child show()");
+    }
+
+    void childMethod() {
+        System.out.println("Child-specific method");
+    }
+}
+
+public class Test {
+    public static void main(String[] args) {
+        Parent obj = new Child();
+        obj.show();
+        // obj.childMethod(); // ❌ Compilation Error
+    }
+}
+🔍 Expected Output:
+Child show()
+📌 Explanation:
+obj.show(); executes Child’s overridden method due to runtime polymorphism.
+obj.childMethod(); results in compilation error because the reference type is Parent, and Parent does not have childMethod().
+👉 Solution: To access childMethod(), we need to downcast:
+((Child) obj).childMethod();

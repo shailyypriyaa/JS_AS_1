@@ -1,0 +1,315 @@
+#####################################
+Differ between throw and throws:
+Feature
+throw
+throws
+
+Definition
+It is used to explicitly throw an exception.
+It is used to declare that a method might throw one or more exceptions.
+
+Location
+It is used inside a method or a block of code.
+It is used in the method signature.
+
+Usage
+It can throw both checked and unchecked exceptions.
+It is only used for checked exceptions. Unchecked exceptions do not require throws.
+
+Responsibility
+The method or block throws the exception.
+The method’s caller is responsible for handling the exception.
+
+Flow of Execution
+Stops the current flow of execution immediately.
+It forces the caller to handle the declared exceptions.
+
+Example
+throw new ArithmeticException(“Error”);
+public void myMethod() throws IOException {}
+
+
+throw is used within the method to actually throw an exception.
+throws is used in the method signature to declare that the method might throw exceptions.
+
+The throws keyword can be used to declare multiple exceptions that a method might throw, but it does not actually throw exceptions. If a method can potentially cause multiple exceptions, you can list them separated by commas.
+
+Syntax of Using throws for Multiple Exceptions
+void myMethod() throws IOException, SQLException {
+    // Code that might throw IOException or SQLException
+}
+In this case:
+The method myMethod() may throw either an IOException or SQLException.
+The caller of myMethod() must handle or declare these exceptions.
+
+###################################
+Differ between null and empty:
+Null
+Definition: In Java, null is a literal that represents a reference to no object. It means that the reference variable points to nothing in memory.
+Usage: null is often used to denote that an object reference has not yet been initialized or that it is not linked to any object. It can be used as a default state for a variable or to explicitly clear references to objects to facilitate garbage collection.
+Empty
+Definition: An "empty" value means that an object or container (like a string, array, or collection) exists, but it contains no elements.
+Usage: Empty is used to indicate that while the reference points to a valid object, the object itself holds no value. This distinction is crucial especially when operations need to be performed on the contents of the object.
+
+###################################
+how to use .split() method in java?
+"\\s+" is a regular expression (regex) used in the split() method. Let's break it down:
+
+Understanding "\\s+"
+\s → Matches any whitespace character (spaces, tabs, newlines).
++ → Matches one or more occurrences of the preceding element (\s).
+Why "\\s+" Instead of "\s+"?
+In Java, \ (backslash) is an escape character in string literals.
+To use \s in a regex, we need to escape the backslash (\\), so it becomes "\\s+".
+How It Works
+If line = "Hello world Java", using line.split("\\s+") will result in:
+java
+Copy
+Edit
+["Hello", "world", "Java"]
+(Extra spaces are ignored because \s+ collapses multiple spaces into one.)
+
+###################################
+How to iterate through strings in java?
+Using for each loop:
+for (char c : word.toCharArray()) - is a for-each loop that iterates over the characters of a string using toCharArray().
+
+Using a Traditional for Loop:
+for (int i = 0; i < word.length(); i++) {
+    char c = word.charAt(i);
+}
+More efficient because it avoids creating an extra array (toCharArray() creates a new array in memory).
+
+###################################
+Interface Pollution
+Interface pollution occurs when an interface includes methods that are not relevant to all implementing classes. This can lead to a situation where classes are forced to implement methods they don't need, resulting in unnecessary complexity and potential maintenance issues.
+
+Fat Interfaces
+A fat interface is an interface that has too many methods, making it cumbersome and difficult to implement. This often happens when an interface tries to cover too many responsibilities, violating the Single Responsibility Principle (SRP).
+
+###################################
+Literals in java :
+public class Hello {
+    public static void main(String[] args) {
+        // Integer literals
+        int decimalInt = 100;
+        int hexInt = 0x64; // hexadecimal for 100
+        int octalInt = 0144; // octal for 100
+        int binaryInt = 0b1100100; // binary for 100
+
+        // Floating-point literals
+        double regularFloat = 3.14;
+        double scientificFloat = 2.5e2; // equivalent to 2.5 * 10^2, or 250.0
+
+        // Character literals
+        char aChar = 'a';
+        char dollarChar = '$';
+
+        // String literals
+        String greeting = "Hello, world!";
+        String programmingLanguage = "Java";
+
+        // Boolean literals
+        boolean flagTrue = true;
+        boolean flagFalse = false;
+
+        // Null literal
+        String nullString = null;
+
+        // Print the literals
+        System.out.println("Integer literals: " + decimalInt + ", " + hexInt + ", " + octalInt + ", " + binaryInt);
+        System.out.println("Floating-point literals: " + regularFloat + ", " + scientificFloat);
+        System.out.println("Character literals: " + aChar + ", " + dollarChar);
+        System.out.println("String literals: " + greeting + ", " + programmingLanguage);
+        System.out.println("Boolean literals: " + flagTrue + ", " + flagFalse);
+        System.out.println("Null literal: " + nullString);
+    }
+}
+
+####################################
+Revised syntax of switch case : 
+public class Switch {
+    public static void main(String[] args) {
+        String month = "JAN";
+        int monthNumber = switch (month) {
+            case "JAN" -> 1;
+            case "FEB" -> 2;
+            case "MAR" -> 3;
+            default -> throw new IllegalStateException("Invalid Month: " + month);
+        };
+        System.out.println("Month Number: " + monthNumber);
+    }
+}
+
+####################################
+Typecasting in java:
+public class TypeCasting {
+    public static void main(String[] args) {
+        int integerNumber = 100;
+        // Automatically converts integer to double (widening conversion). No data is lost.
+        double doubleNumber = integerNumber;
+
+        System.out.println("Integer value: " + integerNumber);
+        System.out.println("Converted to double: " + doubleNumber);
+
+
+        double doubleNum = 9.99;
+        // Manually casting double to int (narrowing conversion). Precision might be lost.
+        int intNum = (int) doubleNum;
+
+        System.out.println("Double value: " + doubleNum);
+        System.out.println("Casted to integer: " + intNum);
+    }
+}
+
+##################################
+Internal Working of HashSet in Java
+HashSet in Java is implemented using a HashMap internally. It is part of the java.util package and is used to store unique elements. Below is a detailed explanation of how HashSet works internally.
+
+1. Internal Data Structure
+HashSet internally uses a HashMap<K, V> with the elements of the HashSet as keys and a constant dummy value (PRESENT).
+The default value used for all keys is private static final Object PRESENT = new Object();.
+2. How HashSet Stores Elements
+When you add an element to a HashSet, it internally calls the put() method of HashMap.
+For example:
+
+HashSet<String> set = new HashSet<>();
+set.add("Hello");
+Internally, it works like:
+
+hashMap.put("Hello", PRESENT);
+The key "Hello" is stored in the HashMap, and the dummy value PRESENT is used.
+Since HashMap does not allow duplicate keys, HashSet ensures uniqueness.
+3. Hashing Mechanism in HashSet
+When an element is added, HashSet calculates its hash code using hashCode().
+The hash code determines the bucket (index) in the hash table where the entry will be stored.
+If two elements have the same hash code (hash collision), they are stored in a linked list (before Java 8) or a balanced tree (red-black tree) (since Java 8).
+4. Internal Steps When Adding an Element
+Compute the HashCode: Calls hashCode() method of the object.
+Find the Bucket Index: (hashCode & (n - 1)), where n is the capacity of the hash table.
+Check for Duplicates: If the key already exists, the new value is not inserted.
+Insert into HashMap: If unique, insert the key with a dummy value.
+5. Load Factor & Rehashing
+Load Factor: Default = 0.75, meaning resizing happens when the HashSet is 75% full.
+Rehashing: When the threshold is reached, the capacity is doubled, and elements are redistributed.
+Example of Internal Working
+java
+Copy
+Edit
+import java.util.*;
+
+public class HashSetExample {
+    public static void main(String[] args) {
+        HashSet<String> set = new HashSet<>();
+        set.add("A");
+        set.add("B");
+        set.add("C");
+        set.add("A"); // Duplicate, will not be added
+
+        System.out.println(set); // Output: [A, B, C]
+    }
+}
+Internally, this creates a HashMap<String, Object>, and stores:
+rust
+Copy
+Edit
+{ "A" -> PRESENT, "B" -> PRESENT, "C" -> PRESENT }
+6. Removing Elements
+Calls hashMap.remove(object), which removes the entry from HashMap.
+7. Performance
+Best case (No collisions): O(1) (constant time).
+Worst case (Many collisions): O(log n) (tree-based structure since Java 8).
+Average case: O(1), as hash functions distribute elements evenly.
+Conclusion
+HashSet is backed by a HashMap (keys are elements, values are dummy).
+Uses hashing for efficient lookup, insertion, and deletion.
+Ensures uniqueness because HashMap does not allow duplicate keys.
+Uses load factor and rehashing to maintain performance.
+
+####################################################
+Checked Exceptions
+Checked exceptions are exceptions that are checked at compile-time. This means that the Java compiler requires you to handle these exceptions explicitly, either by using a try-catch block or by declaring the exception using the throws keyword in the method signature. These exceptions are typically used for conditions that a reasonable application might want to catch and recover from.
+
+public class CheckedExceptionExample {
+    public static void main(String[] args) {
+        try {
+            FileReader file = new FileReader("somefile.txt");
+            file.read();
+            file.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+Unchecked Exceptions
+Unchecked exceptions are exceptions that are not checked at compile-time. These exceptions are subclasses of RuntimeException and are usually indicative of programming errors, such as logic mistakes or improper use of an API. Because they are unchecked, the compiler does not require you to handle them explicitly.
+public class UncheckedExceptionExample {
+    public static void main(String[] args) {
+        int[] numbers = {1, 2, 3};
+        System.out.println(numbers[5]); // This will throw ArrayIndexOutOfBoundsException
+    }
+}
+Key Differences
+Compile-Time Checking:
+Checked Exceptions: Checked at compile-time.
+Unchecked Exceptions: Not checked at compile-time.
+Handling Requirement:
+Checked Exceptions: Must be either caught or declared in the method signature.
+Unchecked Exceptions: No requirement to catch or declare.
+Common Use Cases:
+Checked Exceptions: Used for recoverable conditions (e.g., file not found, network issues).
+Unchecked Exceptions: Used for programming errors (e.g., null pointer access, array index out of bounds).
+
+#############################################################################################
+The hashCode method in Java is a crucial part of the Object class, which is the root of the class hierarchy. Every class in Java inherits this method. The hashCode method provides a way to generate an integer representation of an object, which is used in hashing-based collections like HashMap, HashSet, and Hashtable.
+
+Key Points about hashCode Method:
+Purpose: The hashCode method is used to generate a hash code for an object. This hash code is used by hash-based collections to efficiently locate objects.
+
+Contract: The hashCode method must adhere to the following contract:
+
+If two objects are equal according to the equals(Object) method, they must have the same hash code.
+If two objects have the same hash code, they are not necessarily equal.
+The hash code of an object should remain consistent during the execution of an application, provided the object is not modified in a way that affects equals comparisons.
+Default Implementation: The default implementation of hashCode in the Object class typically converts the internal address of the object into an integer, which is not very useful for most applications. Therefore, it is often overridden in custom classes.
+
+Example of Overriding hashCode:
+Here is a simple example of how to override the hashCode method in a custom class:
+
+
+public class Person {
+    private String name;
+    private int age;
+
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = 17; // Start with a non-zero constant
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + age;
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Person person = (Person) obj;
+        return age == person.age && (name != null ? name.equals(person.name) : person.name == null);
+    }
+}
+Explanation:
+Initial Value: The result is initialized to a non-zero constant (17 in this case).
+Combining Fields: The hash code is computed by combining the hash codes of the fields, using a prime number (31) to reduce the likelihood of collisions.
+Null Handling: The name field is checked for null to avoid NullPointerException.
+By properly overriding hashCode and equals, you ensure that your objects work correctly in hash-based collections, providing efficient lookups and operations.
+
+
+
+
+
+
